@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            /*width: 200px;*/
+            height: 100px;
+            background-color: pink;
+            display:none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            $('div').show(1000);
+        })
+    })
+</script>
+</html>

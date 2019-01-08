@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            text-align: center;
+        }
+
+        img {
+            display: block;
+        }
+
+        #wrap {
+            width: 150px;
+            height: 150px;
+            margin: 150px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            perspective: 700px;
+        }
+
+        #wrap .box {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        #wrap .box img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="wrap">
+    <li class="box box1">
+        <img src="img/img11.jpg" alt="">
+    </li>
+    <li class="box box2">
+        <img src="img/img12.jpg" alt="">
+    </li>
+    <li class="box box3">
+        <img src="img/img13.jpg" alt="">
+    </li>
+    <li class="box box4">
+        <img src="img/img14.jpg" alt="">
+    </li>
+    <li class="box box5">
+        <img src="img/img15.jpg" alt="">
+    </li>
+    <li class="box box6">
+        <img src="img/img16.jpg" alt="">
+    </li>
+    <li class="box box7">
+        <img src="img/img17.jpg" alt="">
+    </li>
+    <li class="box box8">
+        <img src="img/img18.jpg" alt="">
+    </li>
+    <li class="box box9">
+        <img src="img/img19.jpg" alt="">
+    </li>
+</ul>
+
+<button type="button" id="rotateBtn">旋转</button>
+
+
+<script type="text/javascript" src=""></script>
+<script>
+window.onload = function () {
+    var lis = document.querySelectorAll('#wrap li');
+    var rotateBtn = document.getElementById('rotateBtn');
+
+    for(var i = 0;i< lis.length;i++){
+        lis[i].style.transform = 'rotateY('+ i*(360/lis.length) +'deg) translateZ(400px)'
+    }
+
+    var index = 0;
+    rotateBtn.onclick = function () {
+        index++;
+        for(var i = 0;i<lis.length;i++){
+            lis[i].style.transform = 'rotateY('+ ((i+index)*(360/lis.length)) +'deg) translateZ(400px)';
+            lis[i].style.transition = '1s'
+        }
+    }
+}
+</script>
+</body>
+</html>

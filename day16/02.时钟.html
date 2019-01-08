@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+
+        #wrap {
+            background-color: gray;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="400" height="400">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+        //定时器
+        setInterval(function () {
+            painting.clearRect(0, 0, wrap.width, wrap.height);
+            move();
+        }, 1000);
+
+        function move() {
+            painting.save();
+
+            painting.translate(200, 200);
+            painting.rotate(-90 * Math.PI / 180);
+
+            painting.lineWidth = 8;
+            painting.strokeStyle = 'black';
+            painting.lineCap = 'round';
+
+            //外表盘
+            painting.save();
+            painting.lineWidth = 14;
+            painting.strokeStyle = '#325FA2';
+            painting.beginPath();
+            painting.arc(0, 0, 140, 0, 2 * Math.PI, false);
+            painting.stroke();
+            painting.restore();
+
+            //时针刻度
+            painting.save();
+            for (var i = 0; i < 12; i++) {
+                painting.beginPath();
+                painting.moveTo(100, 0);
+                painting.lineTo(120, 0);
+                painting.stroke();
+                painting.rotate(30 * Math.PI / 180);
+            }
+            painting.restore();
+
+            //分针刻度
+            painting.save();
+            painting.lineWidth = 4;
+            for (var i = 0; i < 60; i++) {
+                if (i % 5 != 0) {
+                    painting.beginPath();
+                    painting.moveTo(117, 0);
+                    painting.lineTo(120, 0);
+                    painting.stroke();
+                }
+                painting.rotate(6 * Math.PI / 180);
+            }
+            painting.restore();
+
+
+            var data = new Date();
+            var sec = data.getSeconds();
+            var min = data.getMinutes() + sec / 60;
+            var hour = data.getHours() + min / 60;
+            //时针
+            painting.save();
+            painting.lineWidth = 14;
+            painting.rotate(30 * hour * Math.PI / 180);
+            painting.beginPath();
+            painting.moveTo(-20, 0);
+            painting.lineTo(80, 0);
+            painting.stroke();
+            painting.restore();
+
+            //分针
+            painting.save();
+            painting.lineWidth = 10;
+            painting.rotate(6 * min * Math.PI / 180);
+            painting.beginPath();
+            painting.moveTo(-28, 0);
+            painting.lineTo(112, 0);
+            painting.stroke();
+            painting.restore();
+
+
+            //秒针
+            painting.save();
+
+            painting.fillStyle = '#D40000';
+            painting.lineWidth = 6;
+            painting.strokeStyle = '#D40000';
+            painting.rotate(6 * sec * Math.PI / 180);
+
+            //中心圆点
+            painting.beginPath();
+            painting.arc(0, 0, 10, 0, 2 * Math.PI, false);
+            painting.fill();
+
+            painting.beginPath();
+            painting.moveTo(-30, 0);
+            painting.lineTo(83, 0);
+            painting.stroke();
+
+            //秒针圆头
+            painting.beginPath();
+            painting.arc(96, 0, 10, 0, 2 * Math.PI, false);
+            painting.stroke();
+
+            painting.restore();
+            painting.restore();
+
+        }
+
+    }
+
+</script>
+</body>
+</html>

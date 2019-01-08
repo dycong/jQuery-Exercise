@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+            /*
+            * $ 几种用法
+            * $("div")
+            * $("#show")
+            * $(function(){})
+            * $(document).ready(function(){
+            *
+            * })
+            * 理解$的含义
+            *
+            * $ 它是一个字符串 ，特殊的字符串
+            *
+            * */
+
+            function $(params){
+                   //根据参数的类型去做判断，不同的类型就调用不同的功能
+                    if(typeof params == "string"){
+                            //如果是字符串，调用选择器对应的功能去获取页面上面的元素
+                            // 如果是# 开头 #show，说明是id 选择器 document.getElementById
+                            //div document.getElementsByTagName
+                    }
+                    else if(typeof params =="function"){
+                            document.addEventListener("DOMConentLoader",params);
+                    }else if(typeof params =="object" ){
+
+                    }
+            }
+            //传入不同类型的参数，就可以调用到jQuery 不同的功能. $ 其实也是一个对象。
+            //$("div")
+            //$("#show")
+            //$(function(){})
+            //$(document).ready(function(){
+            // })
+
+    </script>
+</head>
+<body>
+<script>
+
+
+
+</script>
+</body>
+</html>

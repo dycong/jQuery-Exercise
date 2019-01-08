@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 330px;
+            height: 30px;
+            margin: 100px auto 0;
+            padding-left: 10px;
+            background-image: url(imgs/bg.jpg);
+        }
+
+        .wrap li {
+            background-image: url(imgs/libg.jpg);
+        }
+
+        .wrap > ul > li {
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .wrap a {
+            display: block;
+            height: 30px;
+            width: 100px;
+            text-decoration: none;
+            color: #000;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .wrap li ul {
+            position: absolute;
+            top: 30px;
+            display: none;
+        }
+    </style>
+
+    <!--引入包-->
+    <script src="../../js/jquery-1.12.4.js"></script>
+    <script>
+        /*$(function(){
+//                1:获取到三个里元素，给li 元素添加鼠标悬停事件
+                  //之前只会添加点击事件 click()
+                  //后面jQuery 添加，事件名称跟之前保持一致
+                  //把on去掉
+                  //li 元素上面的onmouseover 事件
+                  //这个jQuery 会底层帮我们去绑定,
+                  //触发这个事件，执行我们传递过去的回调函数
+                  $(".wrap ul>li").mouseenter(function(){
+                        //2:获取到当前的事件源下面的子元素 ul 元素 ,进行显示.
+                        //console.dir(this);
+                        //this 指向的是一个dom 对象，不能直接调用jQuery 的方法
+                        //但是this 是一个dom 对象，我们可以把dom 对象包装成jQuery 对象
+                        //如果是jQuery 对象就可以调用show 方法，对元素进行显示.
+                        $(this).children("ul").show(1000);
+                  });
+                 //添加的是鼠标离开事件
+                 $(".wrap ul>li").mouseout(function(){
+                     //hide 是隐藏的意思
+                     $(this).children("ul").hide();
+                 })
+
+        })*/
+
+        $(function(){
+
+                /*对应的元素上面去绑定指定的事件，mouseover ，mouseout 事件.*/
+                $(".wrap>ul>li").mouseenter(function(){
+                         //this 指向当前正在触发的元素
+                         //this 我们都是指向的dom 元素，它就不是一个jQuery 对象.
+                          //如果我接下的操作要调用jQuery 对象里面的属性或者方法，我就需要包装（转换）成jQuery 对象
+                          $(this).children("ul").slideDown(1000);
+                });
+
+                $(".wrap>ul>li").mouseleave(function(){
+                        //获取到当前元素，当前元素的子元素ul 元素向上收起
+                        $(this).children("ul").slideUp(1000);
+                })
+
+        })
+    </script>
+
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li>
+            <a href="javascript:void(0);">一级菜单1</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">一级菜单2</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">一级菜单3</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

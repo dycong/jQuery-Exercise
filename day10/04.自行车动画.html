@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            background: url("img/bike.png") no-repeat 0 0;
+            width: 130px;
+            height: 130px;
+            border: 1px solid #000;
+            margin: 200px auto;
+            animation-name: bike;
+            animation-timing-function: steps(32);
+            animation-iteration-count: infinite;
+            animation-duration:1s;
+        }
+        @keyframes bike {
+            from{background-position: 0px 0px }
+            to{background-position: 0px -4160px}
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

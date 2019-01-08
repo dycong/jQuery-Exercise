@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: darkgray;
+        }
+
+        #wrap {
+            margin: 200px auto;
+            width: 500px;
+            height: 500px;
+            position: relative;
+
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-origin: 50% 50% -40px;
+        }
+
+        #box1 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            justify-content: center;
+
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+
+        #box2 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            justify-content: space-around;
+
+            box-sizing: border-box;
+            padding: 12px 0;
+
+            position: absolute;
+            top: 119px;
+            left: 199px;
+
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+
+        #box3 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            justify-content: space-around;
+
+            box-sizing: border-box;
+            padding: 8px;
+
+            position: absolute;
+            top: 199px;
+            left: 279px;
+
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+
+        #box4 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            justify-content: space-around;
+            /*flex-direction:column;*/
+            box-sizing: border-box;
+            padding: 0px;
+
+            position: absolute;
+            top: 199px;
+            left: 119px;
+
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+
+        #box5 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            justify-content: space-around;
+
+            box-sizing: border-box;
+            padding: 2px;
+
+            position: absolute;
+            top: 279px;
+            left: 200px;
+
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        #box6 {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            box-sizing: border-box;
+            padding: 2px;
+
+            position: absolute;
+            top: 200px;
+            left: 200px;
+
+            transform: translateZ(-80px);
+        }
+
+        .box {
+            width: 15px;
+            height: 15px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+
+        .br {
+            background-color: red;
+        }
+
+        .box1 {
+            align-self: center;
+        }
+
+        .box2 {
+            align-self: flex-start;
+        }
+
+        .box3 {
+            align-self: flex-end;
+        }
+
+        .box4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .box5 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .box6 {
+            display: flex;
+            /*flex-direction: column;*/
+            justify-content: space-around;
+        }
+
+        .box7 {
+            display: flex;
+            /*flex-direction: column;*/
+            justify-content: space-around;
+        }
+
+        .box8 {
+            display: flex;
+            /*flex-direction: column;*/
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+
+    <div id="box1">
+        <div class="box box1 br"></div>
+    </div>
+    <div id="box2">
+        <div class="box box2 br"></div>
+        <div class="box box3"></div>
+    </div>
+    <div id="box3">
+        <div class="box box2"></div>
+        <div class="box box1 br"></div>
+        <div class="box box3"></div>
+    </div>
+    <div id="box4">
+        <div class="box4">
+            <div class="box br"></div>
+            <div class="box"></div>
+        </div>
+        <div class="box5">
+            <div class="box"></div>
+            <div class="box br"></div>
+        </div>
+    </div>
+    <div id="box5">
+        <div class="box4">
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="box box1 br"></div>
+        <div class="box5">
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+    <div id="box6">
+        <div class="box6">
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="box7">
+            <div class="box br"></div>
+            <div class="box br"></div>
+        </div>
+        <div class="box8">
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var deg = 0;
+        setInterval(function () {
+            deg++;
+
+            wrap.style.transform = 'rotateX(' + deg + 'deg)  rotateY(' + deg + 'deg)'
+        }, 30)
+    }
+</script>
+</body>
+</html>

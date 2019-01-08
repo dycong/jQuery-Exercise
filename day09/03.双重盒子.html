@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    body{
+        /*perspective:300px;*/
+    }
+        #wrap {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            /*background-color: gray;*/
+            margin: 300px auto;
+            transition :2s;
+        }
+
+        #wrap1 {
+            width: 100px;
+            height: 100px;
+            /*background: rgba(255, 0, 0, 0.4);*/
+            margin: 200px auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-origin: 50% 50% -50px;
+            transform-style: preserve-3d;
+        }
+
+        #wrap2 {
+            width: 200px;
+            height: 200px;
+            /*background: rgba(0, 255, 0, 0.4);*/
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-origin: 50% 50% -100px;
+            transform-style: preserve-3d;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            /*color: #fff;*/
+        }
+
+        .boy {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            /*color: #fff;*/
+            transition:transform 1s;
+        }
+
+        .box1 {
+            background: url("img/1.jpg");
+            opacity: 1;
+        }
+
+        .box2 {
+            background: url("img/2.jpg");
+            opacity: 1;
+            top: -100px;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+
+        .box3 {
+            background: url("img/3.jpg");
+            opacity: 1;
+            left: 100px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+
+        .box4 {
+            background: url("img/4.jpg");
+            opacity: 1;
+            left: -100px;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+
+        .box5 {
+            background: url("img/5.jpg");
+            opacity: 1;
+            top: 100px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        .box6 {
+            background: url("img/6.jpg");
+            opacity: 1;
+            transform: translateZ(-100px) rotateY(180deg);
+        }
+
+        .boy1 {
+            background: url("img/7.jpg") no-repeat;
+            opacity: 0.6;
+        }
+
+        .boy2 {
+            background: url("img/8.jpg") no-repeat;
+            opacity: 0.6;
+            top: -200px;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+
+        .boy3 {
+            background: url("img/9.jpg") no-repeat;
+            opacity: 0.6;
+            left: 200px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+
+        .boy4 {
+            background: url("img/10.jpg") no-repeat;
+            opacity: 0.6;
+            left: -200px;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+
+        .boy5 {
+            background: url("img/11.jpg") no-repeat;
+            opacity: 0.6;
+            top: 200px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        .boy6 {
+            background: url("img/12.jpg") no-repeat;
+            opacity: 0.6;
+            transform: translateZ(-200px);
+        }
+
+        #wrap:hover #wrap2 div:nth-child(1) {
+            transform: translateZ(100px) ;
+        }
+
+        #wrap:hover #wrap2 div:nth-child(2) {
+            transform:rotateX(90deg) translateZ(100px);
+        }
+
+        #wrap:hover #wrap2 div:nth-child(3) {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        #wrap:hover #wrap2 div:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        #wrap:hover #wrap2 div:nth-child(5) {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        #wrap:hover #wrap2 div:nth-child(6) {
+            transform: translateZ(-300px);
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrap">
+    <div id="wrap1">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+        <div class="box box6"></div>
+    </div>
+
+    <div id="wrap2">
+        <div class="boy boy1"></div>
+        <div class="boy boy2"></div>
+        <div class="boy boy3"></div>
+        <div class="boy boy4"></div>
+        <div class="boy boy5"></div>
+        <div class="boy boy6"></div>
+    </div>
+</div>
+<script type="text/javascript" src=""></script>
+<script>
+
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+        var wrap1 = document.getElementById('wrap1');
+        var wrap2 = document.getElementById('wrap2');
+        var deg1 = 0;
+
+        setInterval(function () {
+            deg1++;
+            wrap1.style.transform = 'rotateX(' + deg1 + 'deg)  rotateY(' + deg1 + 'deg)';
+            wrap2.style.transform = 'rotateX(' + deg1 + 'deg)  rotateY(' + deg1 + 'deg)';
+        }, 30);
+
+//        wrap.onmouseover = function () {
+//            wrap2.style.transform = 'translateZ('+200 +'px)';
+//            wrap2.style.transform = 'transition(2s)'
+//        }
+
+    }
+</script>
+</body>
+</html>

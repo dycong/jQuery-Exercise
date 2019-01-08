@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>随机切换图片案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input{
+            width: 100px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        div {
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        div img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+                //console.log(Math.floor(Math.random() * 5));
+
+                /*
+                * 添加点击事件
+                * */
+
+                $("#btnChangeImg").on("click",function(){
+                         var random = Math.floor(Math.random()*3);
+                         //这个是数组里面的图片的文件名.
+                         var arr = ["c","d","e"];
+                            //显示的图片
+                         $("img").attr("src", "imgs/"+arr[random]+".jpg")
+                });
+                window.setInterval(function(){
+                    /*
+                    * trigger 触发的意思
+                    * */
+                    $("#btnChangeImg").trigger("click");
+                },1000);
+
+
+
+        });
+    </script>
+</head>
+<body>
+<div>
+    <input type="button" value="随机换一张" id="btnChangeImg">
+    <img src="" alt="" id="imgMax" title=""/>
+</div>
+</body>
+</html>

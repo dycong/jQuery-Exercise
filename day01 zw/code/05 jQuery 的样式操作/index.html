@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 的类名操作</title>
+    <style>
+          .box{
+               width: 50px;
+               height: 50px;
+               background-color: pink;
+               border: 3px solid #ccc;
+          }
+          .active{
+               color: #fff;
+               text-decoration: line-through;
+          }
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            //入口函数.
+            $(function(){
+                    $("input[type=button]").click(function(){
+                            // $(".box").css("width","400px");
+                            // $(".box").css("height","400px");
+                            //css 方法可以接受对象. js 里面尽量避免写css 代码.
+                            //  $(".box").css({
+                            //         height:"400px",
+                            //         width:"400px",
+                            //         background:"blue"
+                            //  })
+                            //$(".box").addClass("active");
+                            //$(".box").removeClass("active")
+
+                        //判断当前元素上面是否存在某个类名.
+                        //console.log($(".box").hasClass("active"));
+                        //toggle 切换.
+                        /*
+                        * 在当前元素上面切换指定的类名，如果没有，则追加，如果有，则移除。
+                        * */
+                        //$(".box").toggleClass("active");
+
+                        //显示当前元素，当前元素的一个显示时间。
+                        //$(".box").show(1000);
+                         //hide 隐藏当前元素.
+                          //$(".box").hide(1000);
+
+                        //var $box = $(".box");
+                         //判断当前元素的状态是隐藏的还是显示的，我怎么判断，我可以根据当前元素的样式display 的值去进行判断.
+                        // if($box.css("display")=='block'){
+                        //     $(".box").hide(1000);
+                        // }else{
+                        //     $(".box").show(1000);
+                        // }
+                        /*
+                        *
+                        * 判断当前元素的的状态是显示还是隐藏，如果是显示，则隐藏，如果是隐藏，则显示
+                        * */
+                        // $(".box").toggle(1000);
+
+                        /*淡入淡出的渐变效果*/
+                        //fadeOut
+                        //$(".box").fadeOut(1000);
+                         //$(".box").fadeIn(2000);
+                        /*淡入淡出
+                        * 判断当前元素的的状态是显示还是隐藏，如果是显示，则淡出，如果是隐藏，则淡入
+                        * */
+                        //$(".box").fadeToggle(1000);
+
+                        /*滑动效果*/
+                        /*如果当前元素是显示状态，则向上滑动隐藏*/
+                        // $(".box").slideUp(1000);
+                        /*如果当前元素是因此状态，则向下滑动显示*/
+                         //$(".box").slideDown(1000);
+                         //$(".box").slideToggle(2000);
+                         /*执行动画，定制我们的动画
+                         * 1：是一个对象 ，我要执行什么动画
+                         * 2：执行动画的时间
+                         *
+                         * */
+
+                            $(".box").animate({"marginLeft":"300px","width":"80px","height":"80px"},2000);
+                            window.setInterval(function(){
+                                $(".box").animate({"marginTop":"500px","width":"30px","height":"40px"},2000);
+                            },2000);
+
+                    })
+            })
+    </script>
+
+</head>
+<body>
+
+        <div class="box active">
+                hahah
+        </div>
+        <input type="button" value="操作样式">
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <style>
+        .box{
+             width: 200px;
+             height: 200px;
+             background: red;
+        }
+    </style>
+</head>
+<body>
+    <script>
+            $(function(){
+                 $("input[type=button]:first").click(function(){
+                          $(".box").toggle(1000);
+                 });
+                 $("input[type=button]:last").click(function(){
+                          /*
+                          * stop() 停止动画
+                          *
+                          * 这个里面接收两个参数，它的类型都是bool 值
+                          *
+                        第一个参数表示是否清空所有的后续动画,true
+                        true 代表是否清空当前元素的后续的所有队列里面的动画
+                        false 清除当前正在执行的动画的动作.
+                        第二个参数表示是否立即执行完当前正在执行的动画
+                            如果是true 则当前的动画立即回到结束的时候的状态
+                            如果是false，则当前正在执行的动画完成。
+                          * */
+                          $(".box").stop(true,false);
+                 });
+            })
+    </script>
+    <input type="button" value="执行动画">
+    <input type="button" value="停止动画">
+     <div class="box"></div>
+</body>
+</html>

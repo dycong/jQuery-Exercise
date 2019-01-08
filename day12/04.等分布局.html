@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>等分布局</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .row {
+            display: flex;
+            /*justify-content: space-around;*/
+        }
+
+        .row li {
+            /*background-color: red;*/
+            display: flex;
+            flex-grow: 1;
+            flex-basis: 0;
+            justify-content: center;
+        }
+
+        #wrap .row li a {
+            /*background-color: yellow;*/
+            /*justify-content: center;*/
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*align-items: center;*/
+            text-align: center;
+        }
+
+        #wrap .row li a:before {
+            content: '';
+            width: 86px;
+            height: 86px;
+            display: block;
+            background-repeat:no-repeat;
+        }
+
+        #wrap .row:nth-child(1) li:nth-child(1) a:before {
+            content: '';
+            background-image: url("img/01.png");
+        }
+
+        #wrap .row:nth-child(1) li:nth-child(2) a:before {
+            content: '';
+            background-image: url("img/02.png");
+        }
+
+        #wrap .row:nth-child(1) li:nth-child(3) a:before {
+            content: '';
+            background-image: url("img/03.png");
+        }
+
+        #wrap .row:nth-child(1) li:nth-child(4) a:before {
+            content: '';
+            background-image: url("img/04.png");
+        }
+
+        #wrap .row:nth-child(1) li:nth-child(5) a:before {
+            content: '';
+            background-image: url("img/05.png");
+        }
+
+        #wrap .row:nth-child(2) li:nth-child(1) a:before {
+            content: '';
+            background-image: url("img/06.png");
+        }
+
+        #wrap .row:nth-child(2) li:nth-child(2) a:before {
+            content: '';
+            background-image: url("img/07.png");
+        }
+
+        #wrap .row:nth-child(2) li:nth-child(3) a:before {
+            content: '';
+            background-image: url("img/08.png");
+        }
+
+        #wrap .row:nth-child(2) li:nth-child(4) a:before {
+            content: '';
+            background-image: url("img/09.png");
+        }
+
+        #wrap .row:nth-child(2) li:nth-child(5) a:before {
+            content: '';
+            background-image: url("img/10.png");
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul class="row">
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+    </ul>
+    <ul class="row">
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+        <li><a href="javascript:;">天猫</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

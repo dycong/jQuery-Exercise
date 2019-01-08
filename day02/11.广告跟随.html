@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 5000px;
+        }
+        img{
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="class">
+        <img src="img/yunAd.png" alt="">
+    </div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function () {
+        $(window).scroll(function () {
+            //图片跟随的距离就是窗口垂直滚动的距离
+            $('img').stop().animate({'top':$(window).scrollTop()+160+'px'})
+        })
+
+    })
+</script>
+</body>
+</html>

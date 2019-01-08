@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器里面常见的方法</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                    /*
+                    *  find
+                    *  children
+                    *  next
+                    *  prev
+                    *  parent
+                    *  parents
+                    *  siblings
+                    *  eq
+                    * */
+                /*find 从当前元素的里面去查找指定的元素*/
+                //console.log($("#item").find("li"));
+                /*children 从当前元素的子元素下面查找指定的元素.*/
+                // console.log($("#item").children("#active"));
+                /*获取到当前元素的下一个兄弟节点.*/
+                //console.log($("#item").next().next().text());
+
+
+                //获取到当前元素的上衣兄弟节点.
+                //console.log($("#item").prev());
+
+                // console.log($("#item").parent());
+
+                /*
+                * 获取当前元素的所有的父元素，如果添加参数，就是筛选父元素.
+                * */
+                // console.log($("#item").parents("body"));
+
+                //获取到当前元素的兄弟元素
+                console.log($("#active").siblings("li"));
+
+            })
+    </script>
+</head>
+<body >
+        <div>dddd</div>
+        <ul id="item">
+                <li>苏凯</li>
+                <div></div>
+                <li id="active">项燕科
+                        <ul>
+                              <li></li>
+                        </ul>
+                </li>
+                <li>假如</li>
+                <li>高原</li>
+        </ul>
+        <li>ccc</li>
+        <div>ddd</div>
+</body>
+</html>

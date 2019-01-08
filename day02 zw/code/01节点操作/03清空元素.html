@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>remove  empty 方法的使用</title>
+    <style></style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+
+                //remove  empty
+                $("button:eq(0)").click(function(){
+                          /*删除当前元素里面的内容.*/
+                          $("div").eq(0).empty();
+                });
+                $("button:eq(1)").click(function(){
+                         //删除指定的元素包含自己。
+                         $("div:eq(1)").remove();
+                });
+        });
+    </script>
+</head>
+<body>
+<button>清空内容</button>
+<button>干掉自己</button>
+<div>
+    <h2>原有内容</h2>
+</div>
+<div class="box">
+    <h2>这些内容</h2>
+</div>
+</body>
+</html>

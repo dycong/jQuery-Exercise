@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+   <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+           /*
+           * jquery入口函数的几种写法
+           * */
+            /*第一种写法*/
+            $(function(){
+                    console.log("http://")
+            })
+            $(document).ready(function(){
+                console.log("http://")
+            });
+            /*
+            * 对应到的window.onload 原生的js 的事件
+            * 这个在页面一次只能写一个.
+            *
+            * jquery 的$(function(){})  与 window.onload  它的执行的时间不同.
+            *
+            * window.onload  执行时间是等待页面上面所有的元素都加载完毕之后执行，包含图片，或者其它的一些第三方资源
+            *
+            * $(function(){})  执行事件是等待页面上面的 dom 元素回执完毕之后就执行.
+            *
+            * 以后写代码，一般情况都是写在$(function(){})
+            *
+            * 但是$(function(){}) 事件底层肯定也是封装的原生js 对应的事件
+            * DOMContentLoaded 事件. 整个页面的dom 元素回执完毕之后触发.
+            * */
+            //$(function(){})
+            // document.addEventListener("DOMContentLoaded",function(){
+            //    console.log("www")
+            //  });
+
+
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+</body>
+</html>

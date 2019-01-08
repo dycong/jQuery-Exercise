@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 344px;
+            height: 344px;
+            /*background-color: skyblue;*/
+            margin: 200px auto;
+            animation: fengche 2s linear infinite;
+        }
+
+        #box li {
+            width: 150px;
+            height: 150px;
+            background-color: gold;
+            float: left;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+        #box li:nth-child(1){
+            background-color: red;
+        }
+        #box li:nth-child(2){
+            background-color: yellow;
+        }
+        #box li:nth-child(3){
+            background-color: deepskyblue;
+        }
+        #box li:nth-child(4){
+            background-color: green;
+        }
+        #box li:nth-child(1), #box li:nth-child(4) {
+            border-radius: 0px 100px 0 100px;
+        }
+
+        #box li:nth-child(2), #box li:nth-child(3) {
+            border-radius: 100px 0px 100px 0px;
+        }
+        @keyframes fengche {
+            from {transform: rotate(0deg)}
+            to {transform: rotate(360deg)}
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

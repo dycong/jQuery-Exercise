@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>width  height 方法的使用</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /*设置，和读取.*/
+            $("button:eq(0)").click(function () {
+                     /*
+                     * 获取元素的width 应该怎么处理
+                     * */
+                //200px
+                console.log($("div").css("width"));
+
+                //200
+                console.log($("div").width());
+            });
+            $("button:eq(1)").click(function () {
+                $("div").css("width","300px")
+                $("div").css({width:"500px"})
+                $("div").width(100);
+                //底层是封装的style 属性
+            });
+        });
+    </script>
+</head>
+<body>
+<button>获取</button>
+<button>设置</button>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+@zero: 0;
+* {
+  margin: @zero;
+  padding: @zero;
+}
+
+.juzhong(@c:#fff,@w:100%,@h:100%) {
+  position: absolute;
+  top: @zero;
+  left: @zero;
+  right: @zero;
+  bottom: @zero;
+  margin: auto;
+  background: @c;
+  width: @w;
+  height: @h;
+
+}
+
+#wrap {
+  .juzhong();
+  .box1 {
+    //调用混合
+    .juzhong(@c:red,@w:500px,@h:500px);
+  }
+
+  .box2 {
+    //调用混合
+    .juzhong(@c:yellow,@w:400px,@h:400px);
+  }
+
+  .box3 {
+    //调用混合
+    .juzhong(@c:blue,@w:300px,@h:300px);
+  }
+
+  .box4 {
+    //调用混合
+    .juzhong(@c:green,@w:200px,@h:200px);
+  }
+}
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                 $("#btn").click(function(){
+                     /*获取到li 元素之后，然后获取到第一个li 元素*/
+                     // console.log($("li:first").text());
+                     //获取到最后一个.
+                    // console.log($("li:last").text());
+
+                     //console.log($("#item: first-child").text());
+                     //console.log($("#item:first-child").length);
+                     /*
+                     *
+                     * 获取li元素的父元素下面的第一个子元素，第一个子元素必须是li 元素
+                     * */
+                     //console.log($("ul li:first-child").text());
+
+                     //获取li 元素，索引值为偶数的li 元素. 索引值从0 开始计算.
+                     //console.log($("li:even").css("color","red"));
+                     //获取li 元素，索引值为奇数的li 元素. 索引值从0 开始计算.
+                     //console.log($("li:odd").css("color","red"));
+                     //获取li 元素的索引值等于1
+                     $("li:eq(1)").css("color","red");
+                 })
+            })
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<ul id="item">
+    <div></div>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<div class="item">div</div>
+<p>好凑</p>
+</body>
+</html>

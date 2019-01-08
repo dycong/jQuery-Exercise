@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+
+        /*
+        *   jquery 对象虽然不能调用dom 下面的属性和方法，但是，我们可以把jQuery 对象转换成dom 对象
+        *
+        *   我们的dom 对象也不能调用jQuery 对象里面的方法。但是我们的可以把dom 对象转换成jQuery 对象.
+        * */
+
+        $(function(){
+                //通过document 去获取页面上面的元素，得到的对象就是一个dom 对象
+                  var lis = document.getElementsByTagName("li");
+                  var $lis = $(lis);
+                 $lis.css("background","red");
+                // for(var i =0;i<lis.length;i++) {
+                //     //dom 对象
+                //     var li = lis[i];
+                //     //我想调用jQuery 里面的方法去操作当前元素
+                //     //转换  dom == 》jQuery
+                //     //把dom 对象包装成jQuery 对象
+                //     // var $li = $(li);
+                //     // $li.click(function(){
+                //     //       alert("li");
+                //     // });
+                // }
+        })
+
+    </script>
+</head>
+<body>
+<ul>
+    <li id="libox" >隔行变色,索引号为：0</li>
+    <li>隔行变色,索引号为：1</li>
+    <li>隔行变色,索引号为：2</li>
+    <li>隔行变色,索引号为：3</li>
+    <li>隔行变色,索引号为：4</li>
+    <li>隔行变色,索引号为：5</li>
+    <li>隔行变色,索引号为：6</li>
+    <li>隔行变色,索引号为：7</li>
+    <li>隔行变色,索引号为：8</li>
+    <li>隔行变色,索引号为：9</li>
+</ul>
+</body>
+</html>

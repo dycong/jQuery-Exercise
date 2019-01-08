@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery 练习</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .todo-main li button {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var dataJson = [{
+                'content': '吃饭',
+                'isComplete': false
+            }, {
+                'content': '喝水',
+                'isComplete': false
+            }, {
+                'content': '睡觉',
+                'isComplete': false
+            }];
+
+            /**
+             * 封装绑定数据函数
+             */
+            function bind() {
+                for (var i = 0; i < dataJson.length; i++) {
+                    $('.todo-main').append('<li class="todoItem" style="background-color: rgb(255, 255, 255);"><label><input type="checkbox"><span>' + dataJson[i].content + '</span></label><button class="btn btn-danger" >删除</button></li>');
+                }
+            }
+
+            //绑定数据
+            bind();
+
+            /**
+             * 封装绑定全部任务的个数
+             */
+            function getJsonLength() {
+                $('#allTodos').text($('.todo-main .todoItem').length);
+            }
+            //获取全部任务的个数
+            getJsonLength();
+
+
+
+            //给所有li绑定鼠标移入
+            $('.todo-main').on('mouseenter', '.todoItem', function () {
+                $(this).css('background-color', '#eee');
+                //目标的后代
+                $(this).find('button').show();
+            });
+            $('.todo-main').on('mouseleave', '.todoItem', function () {
+                $(this).css('background-color', '#fff');
+                //目标的后代
+                $(this).find('button').hide();
+            });
+
+            /**
+             * 获取被选中的checkbox的个数，赋值给已完成
+             */
+            function getChecked() {
+                var num = 0;
+                $('.todo-main .todoItem input').each(function (index, obj) {
+                    if ($(this).prop('checked')) {
+                        num++;
+                    }
+                });
+                $('#allCompletedTodos').text(num);
+            }
+
+            /**
+             * 封装函数，如果选中的checkbox的个数等于任务的总数，全选被选中
+             */
+            function setAllCheckboxIsChecked() {
+                var num = 0;
+                $('.todo-main .todoItem input').each(function (index, obj) {
+                    if ($(this).prop('checked')) {
+                        num++;
+                    }
+                });
+                if(num == $('.todo-main .todoItem').length ){
+                    $('#checkAll').prop('checked',true);
+                }else {
+                    $('#checkAll').prop('checked',false);
+                }
+            }
+
+            //单击checkbox
+            $('.todo-main').on('click', '.todoItem input', function () {
+                //被选中的checkbox的个数
+                getChecked();
+                //选中个数等于全部任务时，全选
+                setAllCheckboxIsChecked();
+            });
+
+            //全选和取消全选
+            $('#checkAll').click(function () {
+                if($(this).prop('checked')){
+                    $('.todo-main .todoItem input').prop('checked',true)
+                }else {
+                    $('.todo-main .todoItem input').prop('checked',false)
+                }
+                getChecked();
+            })
+
+
+
+        })
+    </script>
+</head>
+
+<body>
+<div id="root">
+    <div class="todo-container">
+        <div class="todo-wrap">
+            <div class="todo-header">
+                <input id="newTodo" type="text" placeholder="请输入你的任务名称，按回车键确认"/>
+            </div>
+            <ul class="todo-main">
+
+            </ul>
+            <div class="todo-footer">
+                <label>
+                    <input id="checkAll" type="checkbox"/>
+                </label>
+                <span>
+          已完成<span id="allCompletedTodos">0</span> / 全部<span id="allTodos">2</span>
+						</span>
+                <button id="removeAllCompleted" class="btn btn-danger">清除已完成任务</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

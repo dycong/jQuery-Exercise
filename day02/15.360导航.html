@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 752px;
+            /*height: 280px;*/
+            border: 1px solid #000;
+            padding: 10px 0 0 10px;
+            margin: 100px auto;
+        }
+
+        img {
+            display: block;
+        }
+
+        .box ul {
+            overflow: hidden;
+        }
+
+        .box ul li {
+            position: relative;
+            float: left;
+            margin: 0 10px 10px 0;
+            overflow: hidden;
+        }
+
+        .box ul li p {
+            height: 25px;
+            /*line-height: 25px;*/
+            background: rgba(0, 0, 0, 0.5) url(img/nav/110png.png) no-repeat 12px 0;
+            position: absolute;
+            left: 0;
+            bottom: -25px;
+            width: 100%;
+            color: #fff;
+            text-indent: 32px;
+            /*display: none;*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <img src="img/nav/01.jpg">
+            <p>百度</p>
+        </li>
+        <li>
+            <img src="img/nav/02.jpg">
+            <p>淘宝</p>
+        </li>
+        <li>
+            <img src="img/nav/03.jpg">
+            <p>新浪</p>
+        </li>
+        <li>
+            <img src="img/nav/04.jpg">
+            <p>网易</p>
+        </li>
+        <li>
+            <img src="img/nav/05.jpg">
+            <p>搜狐</p>
+        </li>
+        <li>
+            <img src="img/nav/06.jpg">
+            <p>腾讯</p>
+        </li>
+        <li>
+            <img src="img/nav/07.jpg">
+            <p>优酷</p>
+        </li>
+        <li>
+            <img src="img/nav/08.jpg">
+            <p>京东</p>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function () {
+//        $('.box ul li p').css('background-position-y','-175px')
+        //给p设置背景图
+        //第一种for循环
+//        for(var i = 0; i < $('.box ul li p').length ; i++){
+//            var move = i * -25;
+//            $('.box ul li p').eq(i).css('background-position-y',move + 'px')
+//        }
+
+        //第二种方式
+        $('.box ul li p').each(function(index,obj){
+            var i = index*(-25);
+//            $('.box ul li p').eq(index).css('background-position-y',i+'px');
+            $(obj).css('background-position-y',i+'px');
+
+        })
+        $('.box ul li').hover(function () {
+            $(this).children('p').stop().animate({'bottom':'0'},200)
+        },function () {
+            $(this).children('p').stop().animate({'bottom':'-25px'},300)
+        })
+    })
+</script>
+</body>
+</html>

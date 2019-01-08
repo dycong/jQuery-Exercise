@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            /*line-height: 200px;*/
+            text-align: center;
+            height: 200px;
+            border-bottom: 5px solid blue;
+
+            display: flex;
+            flex-direction: row-reverse;
+            flex-direction: column-reverse;
+
+            /*flex-direction:column;*/
+            /*flex-direction:column-reverse;*/
+            /*justify-content: flex-start;*/
+            /*justify-content: flex-end;*/
+            justify-content: center;
+            /*justify-content: space-around;*/
+            /*justify-content: space-between;*/
+
+            align-items: flex-start;
+            align-items: flex-end;
+            /*align-items: center;*/
+            /*align-items: stretch;*/
+            /*align-items: baseline;*/
+
+        }
+        .box1{
+            background-color: yellow;
+            flex-grow: 1;
+        }
+        .box2{
+            background-color: skyblue;
+            flex-grow: 1;
+        }
+        .box3{
+            background-color: orangered;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

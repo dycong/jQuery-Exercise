@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+         div{
+              height: 100px;
+              background-color: green;
+              display: none;
+              margin: 10px;
+         }
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+                /*
+                *   什么是dom 对象
+                *           通过document 去获取页面上面的元素所得到的对象，就是dom 对象
+                *           dom 对象可以调用dom 对象里面的属性以及方法
+                *           dom 对象不能调用jQuery 对象下面的属性以及方法
+                *   什么是jQuery 对象
+                *           通过jQuery 对象去获取页面上面的元素所得到的对象就是jQuery 对象.
+                *           jQuery 对象可以调用JQuery 对下面的属性以及方法。
+                *           但是不能调用dom 对象下面的属性以及方法.
+                * */
+                $(function () {
+                        // 什么是dom 对象
+                        document.getElementById("btn").onclick = function(){
+                             //document.getElementById("demo").show();
+                        }
+
+                        //什么是jQuery 对象
+                        $("#btn").click(function(){
+                                //这个是jQuery 对象。不能调用dom 下面的属性以及方法.
+                                var $demo =  $("#demo");
+                        })
+
+                })
+
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="demo">
+
+</div>
+<div></div>
+<div></div>
+</body>
+</html>

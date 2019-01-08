@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+        }
+
+        #box {
+            margin: 150px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #codeBg {
+            position: absolute;
+            top: 10px;
+            left: 0;
+        }
+
+        #codeBg img {
+            float: left;
+        }
+
+        #codeCan {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="codeBg">
+        <img src="img/coke_bg.jpg" alt="">
+        <img src="img/coke_bg.jpg" alt="">
+    </div>
+    <div id="codeCan">
+        <img src="img/coke_can.png" alt="">
+    </div>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+
+        var box = document.getElementById('box');
+        var codeBg = document.getElementById('codeBg');
+        var codeCan = document.getElementById('codeCan');
+        var codeBgImg = document.querySelectorAll('#codeBg img');
+        //设置codeBg 的宽度与高度
+        codeBg.style.width = codeBgImg[0].width * 2 +'px';
+
+        //获取 codeCan 的宽度与高度
+       var codeCanWidth = codeCan.offsetWidth ;
+       var codeCanHeight = codeCan.offsetHeight;
+
+
+        //设置box 的宽度与高度
+        box.style.width = codeCanWidth + 'px';
+        box.style.height = codeCanHeight + 'px';
+
+        //瓶体旋转 === codeBg 往左边位移
+        var left = 0;
+        setInterval(function(){
+            left--;
+            if(Math.abs(left) === codeBgImg[0].width ){
+                left = 0;
+            }
+            codeBg.style.left = left +'px';
+
+
+        },10)
+
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

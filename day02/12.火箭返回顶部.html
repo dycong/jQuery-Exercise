@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 5000px;
+        }
+
+        img {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="img/01.png" alt="">
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    /*
+     兼容火狐和chrome 的滚动条选择器$('html,body')
+     设置滚动距离scrollTop
+     */
+    $(function () {
+        $(window).scroll(function () {
+            //当垂直滚动的距离大于窗口的距离,显示火箭
+            if ($(window).scrollTop() > $(window).height()) {
+                $('.box img').show();
+            } else {
+                $('.box img').hide();
+            }
+            $('img').hover(function () {
+                $(this).attr('src', 'img/02.gif')
+            }, function () {
+                $(this).attr('src', 'img/01.png')
+            })
+            //滚动条回到顶部 0
+             $('.box img').click(function () {
+                 $('html,body').animate({'scrollTop':'0'})
+             })
+        })
+    })
+</script>
+</body>
+</html>

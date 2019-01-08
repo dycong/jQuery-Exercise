@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: gray;
+            height: 100%;
+            width: 40px;
+        }
+
+        #box {
+            width: 40px;
+            height: 80px;
+            background-color: yellow;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+
+        #content{
+            /*height:0;*/
+            /*background-color: pink;*/
+            width:100%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content"></div>
+
+<div id="wrap">
+    <div id="box"></div>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var box = document.getElementById('box');
+        var content = document.getElementById('content');
+
+        for(var i = 0; i < 1000 ; i++){
+            content.innerHTML += i + '<br>';
+        }
+
+        //滚动条高度
+        //滚动条高度 /屏幕高 = 屏幕高 / 内容高 = 滑块高/滑槽高
+        var scaleH = document.documentElement.clientHeight/content.offsetHeight;
+        box.style.height = scaleH * document.documentElement.clientHeight;
+
+        //定义元素初始位置
+        var eleY = 0;
+
+        //定义鼠标初始位置
+        var startY = 0;
+        //鼠标按下
+        box.onmousedown = function (e) {
+            e = event || window.event;
+
+            //元素初始位置
+            eleY = box.offsetTop;
+            //鼠标初始位置
+            startY = e.clientY;
+            //开启全局捕获
+            box.setCapture && box.setCapture();
+            //鼠标移动
+            document.onmousemove = function (e) {
+                //鼠标结束位置
+                var endY = e.clientY;
+                //鼠标距离差
+                var disY = endY - startY;
+                //范围限定
+                //鼠标距离差 + 元素初始位置
+                var top = disY + eleY;
+                if(top < 0){
+                    top = 0;
+                                //可视区域的高度，滚动条高度,屏幕的高度 —— 元素的高度
+                }else if(top > document.documentElement.clientHeight - box.offsetHeight){
+                    top = document.documentElement.clientHeight - box.offsetHeight
+                };
+                //确定元素最终位置 = 鼠标距离差 + 元素初始位置
+                box.style.top = top + 'px';
+                //窗帘效果
+                // 滚动条移动的距离top / 滚动条临界值T = 窗帘实时高度h / 屏幕区域的高H
+                var scale = top / (document.documentElement.clientHeight - box.offsetHeight);
+                content.style.top = scale*document.documentElement.clientHeight + 'px';
+
+                //内容区域
+                //   t / T = h / H
+                // top / 滚动条临界值 = 内容所走的距离 / (内容高-屏幕高)
+                var scale= top / (document.documentElement.clientHeight - box.offsetHeight);
+                content.style.top = scale * (document.documentElement.clientHeight - content.offsetHeight) + 'px';
+
+
+            }
+            //鼠标离开
+            document.onmouseup = function () {
+
+                //释放全局捕获
+                document.releaseCapture && document.releaseCapture();
+                document.onmousemove = document.onmouseup = null;
+            }
+            //取消浏览器默认行为
+            return false;
+        }
+
+
+    }
+</script>
+</body>
+</html>

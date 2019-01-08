@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+                /*
+                * 点击j_btnGetData 按钮，要去获取数据，获取到数据之后，将数据渲染到table 里面去.
+                * */
+
+
+
+                $("#j_btnGetData").click(function(){
+                        //真实的需求，我要从后台去找数据.
+                        var datas=[
+
+                        ];
+
+                        var array=[];
+
+                        for(var i=0;i<datas.length;i++){
+
+                            var tr="<tr>";
+                            tr+="<td>"+datas[i].title+"</td>"
+                            tr+="<td>"+datas[i].url+"</td>"
+                            tr+="<td>"+datas[i].desc+"</td>"
+                            tr+="<td><input type='button' class='delActive' value='删除'></td>"
+                            tr+="</tr>";
+                            array.push(tr);
+                        }
+                        var str=array.join("");
+                        $("#j_tbData").html(str);
+
+                        /*$(".delActive").click(function(){
+                            alert("a");
+                        });*/
+                });
+
+                //委派事件. 只能通过父元素给子元素去进行委派.孙子元素能不能委派.
+
+                $("#j_tbData").delegate(".delActive","click",function(){
+                     alert("这个事件是通过父元素给孙子元素去委派的");
+                })
+
+
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="获取数据" id="j_btnGetData"/>
+<table>
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>地址</th>
+            <th>说明</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody id="j_tbData">
+
+    </tbody>
+</table>
+</body>
+</html>

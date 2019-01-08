@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+<input type="text" id="eventDom">
+
+<input type="button" value="事件绑定">
+
+<input type="button" value="动态创建元素">
+
+<div>
+         <li>111</li>
+         <li>222</li>
+</div>
+<script>
+        //捕获焦点的时候触发.
+        // document.getElementById("eventDom").onfocus=function(){
+        //         console.log("www")
+        // }
+        //自动定位一个焦点在那个位置.
+        //$("#eventDom").focus();
+        // document.getElementById("eventDom").onblur = function(){
+        //       console.log("失去焦点的时候触发")
+        // }
+
+        //jquery 的第一种绑定事件的方式
+        // $("input[type=button]").click(function(){
+        //
+        // })
+
+            //第二种
+            // $("input[type=button]").bind("click mouseover",function(){
+            //         console.log("触发点击事件");
+            //         $(this).unbind();
+            // });
+
+            /*第三种，委派,通过div 元素，给它的资源li 去委派事件*/
+           $("div").delegate("li","click",function(){
+                  alert(1);
+            })
+
+            /*分析：如果li 元素是后期动态创建的，那么这个li 元素上面也会有点击事件，如果事件绑定我是用的delegate*/
+
+
+            // $("li").bind("click",function(){
+            //        alert("点击事件");
+            // })
+            $("input[type=button]:eq(1)").click(function(){
+                    $("div").append("<li>33333</li>");
+            });
+
+
+
+
+
+</script>
+</body>
+</html>

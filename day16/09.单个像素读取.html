@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="400" height="400">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+        painting.beginPath();
+        painting.fillStyle = 'red';
+        painting.fillRect(0, 0, 100, 100);
+
+        //1.获取画布所有像素点的信息
+        var imgData = painting.getImageData(0, 0, wrap.width, wrap.height);
+
+        //设置（99，99）坐标点为蓝色
+        setPxInfo(imgData, 10, 10, [255, 255, 255, 255]);
+//        for (var i = 0; i < wrap.width; i++) {
+//            setPxInfo(imgData, i, 10, [255, 255, 255, 255]);
+//        }
+//        for (var j = 0; j < wrap.height; j++) {
+//            setPxInfo(imgData, 11, j, [0, 255, 0, 255]);
+//        }
+
+        //读取单个像素点
+        getPxInfo(imgData, 2, 2)
+
+        //单个像素读取操作
+        function getPxInfo(obj, x, y) {
+            var width = obj.width;
+            var objdata = obj.data;
+
+            var colors = [];
+
+            colors[0] = objdata[(width * y + x) * 4 + 0];
+            colors[1] = objdata[(width * y + x) * 4 + 1];
+            colors[2] = objdata[(width * y + x) * 4 + 2];
+            colors[3] = objdata[(width * y + x) * 4 + 3];
+
+            return colors;
+        }
+
+        //写入像素
+        painting.putImageData(imgData, 0, 0);
+
+        //单个像素写入操作
+        function setPxInfo(obj, x, y, color) {
+            //(x,y)之前有多少个像素点: width*y+x
+            //(x,y)之前有多少个像素信息：(width*y+x)*4
+            var width = obj.width;
+            var objdata = obj.data;
+
+            objdata[(width * y + x) * 4 + 0] = color[0];
+            objdata[(width * y + x) * 4 + 1] = color[1];
+            objdata[(width * y + x) * 4 + 2] = color[2];
+            objdata[(width * y + x) * 4 + 3] = color[3];
+        }
+
+
+    }
+
+</script>
+</body>
+</html>

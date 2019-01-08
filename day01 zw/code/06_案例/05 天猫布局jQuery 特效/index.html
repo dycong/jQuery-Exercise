@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            .message{
+                 margin: 100px auto;
+                 width: 700px;
+            }
+            #keywords{
+                  width: 500px;
+                  font-size: 28px;
+            }
+            input[type=button]{
+                  font-size: 28px;
+            }
+            ul{
+                 margin: 0;
+                 padding: 0;
+                 list-style: none;
+            }
+            ul li{
+                 padding: 5px;
+                 cursor: pointer;
+            }
+            .box{
+                 width: 500px;
+                 border: 1px solid #ccc;
+                 border-top:none;
+                 display: none;
+            }
+
+            .tClass{
+                 background-color: red;
+            }
+    </style>
+    <script src="../../js/jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                    //1:定位光标
+                    $("#keywords").focus();
+
+                    $("#keywords").keyup(function(){
+
+                           //this.value
+                           var keyword=this.value;
+                           if(keyword.length>0){
+                                $(".box").show();
+                           }else{
+                               $(".box").hide();
+                           }
+                    });
+                    $(".box ul li").mouseover(function(){
+                            $(this).addClass("tClass");
+                    });
+                    $(".box ul li").mouseout(function(){
+                            $(this).removeClass("tClass");
+                    });
+
+                    //监听键盘
+                    $(document).keydown(function(event){
+
+                            //console.log(event.keyCode);
+
+                            //监听用户的行为
+                            if(event.keyCode==38){ //按的向上的按键
+
+                            }else if(event.keyCode==40){ //按的向下的按键
+                                    /*判断搜索结果列表里面高亮的元素.*/
+                                  var highli=$(".tClass");
+                                  if(highli.length>=1){ //存在高亮的.
+                                        //把当前正在高亮的元素的背景色去掉
+                                      highli.removeClass("tClass");
+                                        //得到当前元素的下一个兄弟li 元素然后添加背景色
+                                      highli.next().addClass("tClass");
+                                  }else{ //不存在高亮的
+
+                                        $(".box ul li:first-child").addClass("tClass");
+                                  }
+                            }
+                    })
+            });
+
+
+    </script>
+</head>
+<body>
+     <div class="message">
+         <input type="text" id="keywords" >
+         <input type="button" value="搜索" id="buttonId">
+         <div class="box">
+             <ul>
+                 <li >中国电信</li>
+                 <li>中国移动</li>
+                 <li>中国联通</li>
+                 <li>中国银行</li>
+                 <li>中国石化</li>
+                 <li>中国好声音</li>
+                 <li>中国好嫂子</li>
+                 <li>中国好丈夫</li>
+                 <li>中国好基友</li>
+                 <li>中国好闺蜜</li>
+             </ul>
+         </div>
+     </div>
+</body>
+</html>

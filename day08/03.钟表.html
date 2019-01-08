@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            margin: 150px auto;
+            background-color: #f0f0f0;
+            position: relative;
+
+        }
+
+        #hour {
+            width: 6px;
+            height: 60px;
+            background-color: #000;
+            position: absolute;
+            top: 90px;
+            left: 147px;
+            /*transform-origin: 3px 60px;*/
+            transform-origin: bottom;
+        }
+
+        #min {
+            width: 4px;
+            height: 80px;
+            background-color: #000;
+            position: absolute;
+            top: 70px;
+            left: 148px;
+            /*transform-origin: 2px 80px;*/
+            transform-origin: bottom;
+
+        }
+
+        #sec {
+            width: 2px;
+            height: 100px;
+            background-color: orangered;
+            position: absolute;
+            top: 50px;
+            left: 149px;
+            /*transform-origin: 1px 100px;*/
+            transform-origin: bottom;
+
+        }
+
+        #cen {
+            width: 20px;
+            height: 20px;
+            background-color: lightskyblue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        #list {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            list-style: none;
+            position: relative;
+        }
+
+        #list li {
+            width: 2px;
+            height: 8px;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 148px;
+            transform-origin: 1px 150px;
+
+            /*在css里边定义自增函数 counter-increment*/
+        }
+
+        #list li:nth-child(5n + 1) {
+            counter-increment: num;
+            width: 4px;
+            height: 16px;
+            transform-origin: 2px 150px;
+        }
+
+        #list li:nth-child(15n+1) {
+            height: 20px;
+        }
+
+        #list li:nth-child(15n):before {
+            /*content:counter(num);*/
+            position: absolute;
+            left: 6px;
+            top: 0px;
+            transform-origin: bottom;
+            transform: rotate(0deg);
+        }
+
+        #list li:nth-child(15n):before {
+            content: counter(num);
+            position: absolute;
+            left: 6px;
+            top: 20px;
+            transform-origin: bottom;
+            transform: rotate(5deg);
+        }
+
+        #list li:nth-child(15):before {
+            position: absolute;
+            left: 20px;
+            top: 8px;
+            transform-origin: bottom;
+            transform: rotate(276deg);
+        }
+
+        #list li:nth-child(30):before {
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            transform-origin: bottom;
+            transform: rotate(186deg);
+        }
+
+        #list li:nth-child(45):before {
+            position: absolute;
+            left: 0px;
+            top: 7px;
+            transform-origin: bottom;
+            transform: rotate(97deg);
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="list"></ul>
+    <div id="hour"></div>
+    <div id="min"></div>
+    <div id="sec"></div>
+    <div id="cen"></div>
+</div>
+
+<script type="text/javascript">
+    var list = document.getElementById('list');
+
+
+    for (var i = 0; i < 60; i++) {
+        //创建钟表刻度
+        var li = document.createElement('li');
+        //li旋转
+        li.style.transform = 'rotate(' + 6 * i + 'deg)';
+        //将li添加到ul中
+        list.appendChild(li);
+    }
+
+
+    var hourDom = document.getElementById('hour');
+    var minDom = document.getElementById('min');
+    var secDom = document.getElementById('sec');
+
+    setInterval(function () {
+        var date = new Date();
+
+        var sec = date.getSeconds();
+        var min = date.getMinutes();
+        min = min + sec / 60;
+        var hours = date.getHours();
+        hours = hours + min / 60;
+
+        hourDom.style.transform = 'rotate(' + hours * 30 + 'deg)';
+        minDom.style.transform = 'rotate(' + min * 6 + 'deg)';
+        secDom.style.transform = 'rotate(' + sec * 6 + 'deg)'
+
+
+    })
+
+
+</script>
+</body>
+</html>

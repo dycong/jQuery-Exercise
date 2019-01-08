@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+
+        }
+
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+            /*opacity: 0.4;*/
+        }
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+    <script src="../../js/jquery-1.12.4.js"></script>
+    <script>
+            /*
+            * 需求：
+            *       1:鼠标悬停到li 元素.
+            *       2:我要把当前的li 元素的opacity 1
+            *       3:我要把其它的兄弟元素的opacity 0.5
+            *       4:我离开外面的区域 所有的li 元素 它的opacity 1
+            * */
+            // $(function(){
+            //
+            //
+            //
+            //         /*mouseenter 鼠标进入该元素的时候触发.
+            //         * mouseover 与mouseenter 的区别后面讲解
+            //         * */
+            //         $(".wrap>ul>li").mouseenter(function(){
+            //
+            //
+            //                //把当前元素本身的透明度改成1
+            //                //$(this).css("opacity",1);
+            //                //把当前元素的其它兄弟元素的opacity 的值改成 0.5
+            //                //$(this).siblings().css("opacity",0.5);
+            //                //改写成一句话
+            //                $(this).css("opacity",1).siblings().css("opacity",0.5);
+            //                //css("","") 两个参数是设置当前元素的样式 返回的还是jQuery对象
+            //                //css("backgroundColor") 一个参数，获取当前元素的样式的值，返回值string
+            //         });
+            //
+            //         /*
+            //         * mouseenter 跟 mouseleave
+            //         * mouseover 跟 mouseout 一对
+            //         * */
+            //         $(".wrap").mouseleave(function(){
+            //                 //把所有的li 元素的透明度还原.
+            //                 $(this).find("li").css("opacity",1);
+            //         });
+            //
+            //
+            // })
+
+
+            $(function(){
+                  $("ul li").mouseenter(function(){
+                          console.log("w");
+                          $(this).css("opacity",1).siblings("li").css("opacity",0.5);
+                  });
+
+                    // $("ul li").mouseleave(function(){
+                    //     $(this).siblings("li").css("opacity",1);
+                    // });
+
+                    //类似于抽奖的逻辑
+                    // var i = 0 ;
+                    // window.setInterval(function(){
+                    //     if(i>5){
+                    //         i = 0;
+                    //     }
+                    //     if(i<3){
+                    //          $("ul li").eq(i).css("opacity",1).siblings("li").css("opacity",0.5);
+                    //     }else{
+                    //          if(i==3){
+                    //              $("ul li").eq(5).css("opacity",1).siblings("li").css("opacity",0.5);
+                    //          }
+                    //         if(i==4){
+                    //             $("ul li").eq(4).css("opacity",1).siblings("li").css("opacity",0.5);
+                    //         }
+                    //         if(i==5){
+                    //             $("ul li").eq(3).css("opacity",1).siblings("li").css("opacity",0.5);
+                    //         }
+                    //     }
+                    //     i++;
+                    // },500);
+            })
+
+
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/06.jpg" alt=""/></a></li>
+    </ul>
+</div>
+</body>
+</html>

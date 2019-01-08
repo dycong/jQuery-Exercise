@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                 $("#btn").click(function(){
+                        /*层级选择器*/
+                     /*
+                     * 获取当前元素#item 的子元素是li 的元素，包括孙子元素
+                     * */
+                     //console.log($("#item li").length);
+                     //只获取子元素，不获取孙子元素.
+                     console.log($("#item>li").length);
+                 })
+            })
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<ul id="item">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>
+        <ul>
+            <li style="font-size: 12px;">a</li>
+            <li style="font-size: 12px;">b</li>
+            <li style="font-size: 12px;">c</li>
+            <li style="font-size: 12px;">d</li>
+        </ul>
+    </li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<div class="item">div</div>
+<p>好凑</p>
+</body>
+</html>

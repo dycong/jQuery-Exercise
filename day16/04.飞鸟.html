@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            /*background-color: pink;*/
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="800" height="400">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+        var num = 0;
+
+        var left = 0;
+
+        setInterval(function () {
+            painting.clearRect(0,0,wrap.width,wrap.height)
+            var imgNode = new Image();
+            left += 10;
+            if(left > wrap.width){
+                left = -150;
+            }
+            num++;
+            if (num > 8) {
+                num = 1;
+            }
+            imgNode.src = 'img/q_r' + num + '.jpg';
+
+            imgNode.onload = function () {
+                //对象，初始位置，画面的高度与宽度
+                painting.drawImage(imgNode, left, 150, 150, 90);
+            }
+        }, 50)
+
+    }
+
+</script>
+</body>
+</html>

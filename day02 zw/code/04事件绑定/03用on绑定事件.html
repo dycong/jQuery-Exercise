@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+                /*
+                * 两种用法
+                *   1:直接给当前元素添加事件
+                *   2:给当前元素的子元素以及孙子元素去委派事件.
+                * */
+                //1:直接给当前元素添加事件
+                $("button:eq(0)").on("click mouseover",function(){
+                      alert("a");
+                })
+                //2:给当前元素的子元素以及孙子元素去委派事件.
+                /*
+                * 1:委派的事件名称
+                *
+                * */
+//                $("div").on("click","span",function(){
+//                     alert("通过div 给span 委派的事件.");
+//                })
+//                //新创建一个span 进入到div，然后看这个span 是否具有点击事件.
+//                $("button:eq(1)").on("click",function(){
+//                       var span=document.createElement("span");
+//                       span.innerHTML="这个是新建的span 元素";
+//                       $("div").append(span);
+//                });
+
+                //on 绑定事件  off 去解绑事件.
+                //$("button:eq(0)").off("mouseover");
+        });
+    </script>
+</head>
+<body>
+<button>绑定事件</button>
+<button>新建元素</button>
+<div>
+    <p>原有的p标签</p>
+    <span>原有的span标签</span>
+</div>
+</body>
+</html>

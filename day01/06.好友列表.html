@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .wrap {
+            width: 200px;
+            text-align: center;
+        }
+
+        .menu {
+            border: 1px solid #999;
+            background-color: #e0ecff;
+        }
+
+        .title {
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .menu > div {
+            height: 200px;
+            background-color: pink;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<ul class="wrap">
+    <li class="menu">
+        <span class="title">我的好友</span>
+        <div class="">我的好友列表</div>
+    </li>
+    <li class="menu">
+        <span class="title">土豪们</span>
+        <div class="">兰博基尼，法拉利，保时捷，玛莎拉蒂，布加迪威龙</div>
+    </li>
+    <li class="menu">
+        <span class="title">程序员</span>
+        <div class="">java，javascript，jQuery，</div>
+    </li>
+    <li class="menu">
+        <span class="title">我的好友</span>
+        <div class="">我的好友列表</div>
+    </li>
+</ul>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function () {
+        $(".title").click(function () {
+
+            //点击的当前元素的下一个兄弟元素div 元素下滑.
+//            $(this).next().slideDown(300);
+            //获取到它的父元素兄弟li元素下面的div 元素上滑.
+//            $(this).parent().siblings().children("div").slideUp(300);
+            //这两句代码变成一句代码.
+//            $(this).next().slideDown(300).parent().siblings().children("div").slideUp(300);
+        });
+        $(".title").mouseenter(function(){
+            $(this).next().slideDown(300).parent().siblings().children("div").slideUp(300);
+        })
+
+
+
+
+    })
+</script>
+</body>
+</html>

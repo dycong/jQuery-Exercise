@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 1200px;
+            height: 300px;
+            border: 1px solid #000;
+            margin:100px auto;
+            overflow: hidden;
+        }
+        img{
+            display: block;
+        }
+        .box ul{
+            width: 1300px;
+            overflow: hidden;
+        }
+        .box ul li{
+            float: left;
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <img src="img/pic/01.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/pic/02.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/pic/03.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/pic/04.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/pic/05.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/pic/06.jpg"4 alt="">
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    /*
+    由于ul 的宽度继承box 的宽度1200px，当鼠标快速滑动li的时候，
+        由于li改变宽度，所以li值需要计算，这时6个li相加的宽度有可能大于或小于 ul
+        超过了父盒子的宽度，解决方案，给父盒子加大宽度
+     */
+    $(function(){
+        $(".box ul li").hover(function(){
+            //移入
+            $(this).stop().animate({'width':'500px'}).siblings().stop().animate({'width':'142px'});
+        },function(){
+            //移出
+            $('.box ul li').stop().animate({'width':'200px'});
+        })
+    })
+</script>
+</body>
+</html>

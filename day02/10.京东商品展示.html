@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 790px;
+            height: 362px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        img{
+            display: block;
+        }
+        .box ul li{
+            overflow: hidden;
+            float: left;
+            width: 158px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <img src="img/jd/01.jpg" alt="">
+            <img src="img/jd/02.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/jd/03.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/jd/04.jpg" alt="">
+            <img src="img/jd/05.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/jd/06.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/jd/07.jpg" alt="">
+            <img src="img/jd/08.jpg" alt="">
+        </li>
+
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function(){
+        //得到img ,
+       $('img').hover(function(){
+           $(this).stop().animate({'margin-left':'-15px'});
+       },function () {
+           $(this).stop().animate({'margin-left':''});
+       })
+        //移出
+     
+    })
+</script>
+</body>
+</html>

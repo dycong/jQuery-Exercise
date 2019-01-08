@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 600px;
+            padding: 10px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        .box ul{
+            overflow: hidden;
+        }
+        .box ul li{
+            float: left ;
+            width: 200px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+        .btn{
+            height: 18px;
+            line-height: 18px;
+            width: 200px;
+            background:#fff url(img/down.gif) no-repeat 30px center;
+            border: 1px solid #000;
+            outline:none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>佳能</li>
+        <li>索尼</li>
+        <li>三星</li>
+        <li>尼康</li>
+        <li>松下</li>
+        <li>卡西欧</li>
+        <li>富士</li>
+        <li>柯达</li>
+        <li>宾得</li>
+        <li>理光</li>
+        <li>奥林巴斯</li>
+        <li>明基</li>
+        <li>其它品牌相机</li>
+    </ul>
+    <button class="btn">隐藏所有内容</button>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function () {
+        //大于编号2，小于编号12，隐藏
+        /*
+        当第一次过滤后，获取到的所有元素存在数组中，编号从0开始
+            所以在第二次过滤的时候，编号按照第一次过滤后的编号排序
+         */
+//        $('.box ul li:gt(2):lt(9)').hide();
+        //单击按钮
+        $('.btn').on('click',function(){
+
+            if($('.btn').text() === '显示所有内容'){
+            //1.三排隐藏的滑动显示
+                $('.box ul li:gt(2):lt(9)').slideToggle();
+            //2.按钮文本修改
+                $('.btn').text('隐藏所有内容');
+            //3.按钮图片切换
+                $('.btn').css('background-image','url(img/up.gif)')
+            }else{
+                $('.box ul li:gt(2):lt(9)').slideToggle();
+                $('.btn').text('显示所有内容');
+                $('.btn').css('background-image','url(img/down.gif)')
+            }
+
+        })
+
+    })
+</script>
+</body>
+</html>

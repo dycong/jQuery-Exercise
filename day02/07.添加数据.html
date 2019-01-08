@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 410px;
+            margin: 100px auto;
+        }
+
+        table {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            border: 1px solid #d0d0d0;
+            color: #404040;
+            padding: 10px;
+        }
+
+        #j_btnAddData {
+            width: 110px;
+            height: 30px;
+            line-height: 30px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        th {
+            color: #fff;
+            background-color: #0099cc;
+        }
+
+        td a {
+            text-decoration: none;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .form-item {
+            height: 100%;
+            position: relative;
+            padding-left: 100px;
+            padding-right: 20px;
+            margin-bottom: 34px;
+            line-height: 36px;
+        }
+
+        .form-item > .lb {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100px;
+            text-align: right;
+        }
+
+        .form-item > .txt {
+            width: 300px;
+            height: 32px;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            display: none;
+        }
+
+        .form-add {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            margin-left: -197px;
+            padding-bottom: 20px;
+            background: #fff;
+            display: none;
+        }
+
+        .form-add-title {
+            background-color: #f7f7f7;
+            border-width: 1px 1px 0 1px;
+            border-bottom: 0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-add-title span {
+            width: auto;
+            height: 18px;
+            font-size: 16px;
+            font-family: 宋体;
+            font-weight: bold;
+            color: rgb(102, 102, 102);
+            text-indent: 12px;
+            padding: 8px 0px 10px;
+            margin-right: 10px;
+            display: block;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .form-add-title div {
+            width: 16px;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            font-size: 30px;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            text-align: center;
+        }
+
+        .form-submit input {
+            width: 170px;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <!--添加按钮-->
+    <div>
+        <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd"/>
+    </div>
+    <!--表格-->
+    <table>
+        <thead>
+        <tr>
+            <!-- <th><input type="checkbox" id="j_cbAll" /></th> -->
+            <th>课程名称</th>
+            <th>所属学院</th>
+            <th>已学会</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+        <tr>
+            <td>JavaScript</td>
+            <td>尚硅谷-前端与移动开发学院</td>
+            <td><a href="javascrip:;" class="get">删除</a></td>
+        </tr>
+        <tr>
+            <td>css</td>
+            <td>尚硅谷-前端与移动开发学院</td>
+            <td><a href="javascrip:;" class="get">删除</a></td>
+        </tr>
+        <tr>
+            <td>html</td>
+            <td>尚硅谷-前端与移动开发学院</td>
+            <td><a href="javascrip:;" class="get">删除</a></td>
+        </tr>
+        <tr>
+            <td>jQuery</td>
+            <td>尚硅谷-前端与移动开发学院</td>
+            <td><a href="javascrip:;" class="get">删除</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!--遮罩层-->
+<div id="j_mask" class="mask"></div>
+<!--添加区域-->
+<div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+        <span>添加数据</span>
+        <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+        <label class="lb" for="j_txtLesson">课程名称：</label>
+        <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+    </div>
+    <div class="form-item">
+        <label class="lb" for="j_txtBelSch">所属学院：</label>
+        <input class="txt" type="text" id="j_txtBelSch" value="尚硅谷-前端与移动开发学院">
+    </div>
+    <div class="form-submit">
+        <input type="button" value="添加" id="j_btnAdd">
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    //点击添加数据按钮  出现蒙版
+    $("#j_btnAddData").on("click", function () {
+        $("#j_mask,#j_formAdd").css('display', "block");
+//        $("#j_mask").show().next().show();
+    });
+
+    //点击 X 按钮，关闭蒙版
+    $("#j_hideFormAdd").on("click", function () {
+        $("#j_mask,#j_formAdd").css("display", "none");
+//        $("#j_mask").hide().next().hide();
+    });
+
+    //出现蒙版后，点击添加按钮，将数据添加到表格中，然后关闭蒙版
+    $("#j_btnAdd").on('click', function () {
+//        $("#j_txtLesson").val().append();
+//        $("#j_txtBelSch").val().append();
+        var tr = '';
+        tr += "<tr>";
+        tr += "<td>" + $("#j_txtLesson").val() + "</td>";
+        tr += "<td>" + $("#j_txtBelSch").val() + "</td>";
+        tr += '<td><a href="javascrip:;" class="get">删除</a></td>';
+        tr += "</tr>";
+        $("#j_tb").append(tr);
+        $("#j_mask,#j_formAdd").css("display", "none")
+    });
+
+    //点击删除按钮，删除一行数据
+    //    $(".get").on('click',function(){
+    $(".wrap").on('click','.get', function () {
+        $(this).parent().parent().remove();
+    })
+
+</script>
+</body>
+</html>

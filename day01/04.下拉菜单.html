@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 330px;
+            height: 30px;
+            margin:100px auto 0;
+            padding-left: 10px;
+            background: pink;
+        }
+        #box > ul > li{
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+        #box a{
+            display: block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+            color: #000;
+            text-align: center;
+        }
+        #box li ul{
+            position: absolute;
+            top:30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li>
+            <a href="##">一级菜单1</a>
+            <ul>
+                <li><a href="">二级菜单1</a></li>
+                <li><a href="">二级菜单2</a></li>
+                <li><a href="">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="##">一级菜单2</a>
+            <ul>
+                <li><a href="">二级菜单1</a></li>
+                <li><a href="">二级菜单2</a></li>
+                <li><a href="">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="##">一级菜单3</a>
+            <ul>
+                <li><a href="">二级菜单1</a></li>
+                <li><a href="">二级菜单2</a></li>
+                <li><a href="">二级菜单3</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>
+    $(function(){
+//        $("#box>ul>li").mouseenter(function(){
+//            $(this).children("ul").stop().slideDown(100)
+//        })
+//        $("#box>ul>li").mouseleave(function(){
+//            $(this).children("ul").stop().slideUp(100)
+//        })
+
+//        hover的鼠标移入是mouseenter，移出是mouseleave
+//        $('#box>ul>li').hover(function(){
+//            $(this).children("ul").stop().slideDown(100)
+//        },function(){
+//            $(this).children("ul").stop().slideUp(100)
+//        })
+
+        //当移入和移出代码相同时，可以只写一个回调函数
+        $('#box>ul>li').hover(function(){
+            $(this).children("ul").stop().slideToggle(500)
+        })
+    })
+</script>
+</body>
+</html>

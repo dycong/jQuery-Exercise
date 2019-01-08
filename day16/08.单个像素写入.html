@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="400" height="400">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+        painting.beginPath();
+        painting.fillStyle = '#e50000';
+        painting.fillRect(0, 0, 100, 100);
+
+        //1.获取画布所有像素点的信息
+        var imgData = painting.getImageData(0, 0, wrap.width, wrap.height);
+
+        //设置（99，99）坐标点为蓝色
+        setPxInfo(imgData, 35, 36, [0, 0, 255, 255]);
+
+        //写入像素
+        painting.putImageData(imgData, 0, 0);
+
+        //单个像素写入操作
+        function setPxInfo(obj, x, y, color) {
+            //(x,y)之前有多少个像素点: width*y+x
+            //(x,y)之前有多少个像素信息：(width*y+x)*4
+            var width = obj.width;
+            var objdata = obj.data;
+
+            objdata[(width * y + x) * 4 + 0] = color[0];
+            objdata[(width * y + x) * 4 + 1] = color[1];
+            objdata[(width * y + x) * 4 + 2] = color[2];
+            objdata[(width * y + x) * 4 + 3] = color[3];
+
+        }
+
+
+    }
+
+</script>
+</body>
+</html>

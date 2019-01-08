@@ -1,0 +1,46 @@
+@zero: 0;
+@wrap: wrap;
+
+@w: width;
+
+* {
+  margin: @zero;
+  padding: @zero;
+  list-style: none;
+  text-decoration: none;;
+}
+
+#@{wrap} {
+    @{w}: 200px;
+  height: 200px;
+  background-color: yellow;
+  margin: 200px auto;
+}
+#list{
+  >li{
+    width: 200px;
+    height: 50px;
+  }
+}
+
+#list {
+  > li {
+    &:nth-child(odd) {
+        @{w}: 200px;
+      height: 50px;
+      background-color: deeppink;
+    }
+    &:nth-child(even) {
+        @{w}: 200px;
+      height: 50px;
+      background-color: skyblue;
+    }
+    &:hover{
+      background-color: yellow;
+        >a{
+          color: #000;
+        }
+    }
+
+  }
+}

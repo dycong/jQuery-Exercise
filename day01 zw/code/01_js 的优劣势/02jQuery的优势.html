@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 100px;
+            margin: 20px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <!--我要使用jQuery-->
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            //编写入口函数
+            // $(function(){
+            //  属于一个入口函数，页面加载完毕的时候执行
+            //
+            // })
+            $(function(){   //入口函数
+                $("#show").click(function(){ //获取一个元素，添加点击事件.
+                    //显示,2000 显示的时间.
+                    $("div").show(1000);  //获取到某个具体的元素显示它 ，支持批量。
+                })
+
+                $("#text").click(function(){  //获取一个元素，添加点击事
+                    $("div").text("hello world"); //获取到这个元素，设置里面的文本.
+                })
+            });
+    </script>
+</head>
+<body>
+<button id="show">显示</button>
+<button id="text">添加文本</button>
+        <div></div>
+        <div></div>
+        <div></div>
+</body>
+</html>

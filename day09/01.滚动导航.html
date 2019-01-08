@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            display: block;
+        }
+
+        #wrap {
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+        #home {
+            width: 50px;
+            height: 50px;
+            background: url("img/home.png") no-repeat;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transition: 2s;
+        }
+
+        #list {
+            position: relative;
+            top: 4px;
+            left: 4px;
+            width: 42px;
+            height: 42px;
+        }
+
+        #list li {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        #list li img {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="home"></div>
+    <ul id="list">
+        <li><a href="javascript:;"><img src="img/clos.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="img/full.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="img/open.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="img/prev.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="img/refresh.png" alt=""></a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var home = document.getElementById('home');
+        var flag = true;
+        var lis = document.querySelectorAll('#list li');
+        var c = 150;
+
+        home.onclick = function () {
+            if (flag) {
+                home.style.transform = 'rotate(-360deg)';
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].style.left = -getPoint(c, 90 / (lis.length - 1) * i).left + 'px';
+                    lis[i].style.top = -getPoint(c, 90 / (lis.length - 1) * i).top + 'px';
+                    //加旋转
+                    lis[i].style.transform = 'rotate(-720deg)';
+                    //加过渡
+                    lis[i].style.transition = '0.5s ' + i * 0.1 + 's'
+
+                }
+            } else {
+                home.style.transform = 'rotate(0deg)';
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].style.left = 0;
+                    lis[i].style.top = 0;
+                    //加旋转
+                    lis[i].style.transform = 'rotate(0deg)';
+                    //加过渡
+                    lis[i].style.transition = '0.5s ' + (lis.length - 1 - i) * 0.1 + 's'
+
+                }
+            }
+            flag = !flag;
+        };
+
+        function getPoint(c, deg) {
+            var left = c * Math.sin(deg * Math.PI / 180);
+            var top = c * Math.cos(deg * Math.PI / 180);
+
+            return {left: left, top: top};
+        }
+
+        //点击小图
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                this.style.transform = 'rotate(-720deg) scale(1.3)';
+                this.style.opacity = '0.5';
+                this.style.transition = '1s';
+
+                //过渡结束之后缩回来
+                //检测过渡结束事件 transitionend
+                // dom2绑定
+                //1.兼容问题
+                //2.解绑问题
+                this.addEventListener('transitionend',fun);
+                this.addEventListener('webkitTransitionEnd', fun);
+
+                function fun() {
+                    this.style.transform = 'rotate(-720deg) scale(1)';
+                    this.style.opacity = '1';
+                    this.style.transition = '0s';
+
+                    //解绑问题
+                    this.removeEventListener('transitionend', fun);
+                    this.removeEventListener('webkitTransitionEnd', fun)
+
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

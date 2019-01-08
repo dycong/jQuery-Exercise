@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 48px;
+            height: 48px;
+            background: url("img/animation.png") no-repeat;
+            margin: 150px auto;
+            border: 1px solid #000;
+            animation-name: tusiji;
+            animation-iteration-count: infinite;
+            animation-duration:1s;
+            animation-timing-function: steps(12);
+        }
+
+        @keyframes tusiji {
+            from{background-position: 0px 0px}
+            to{background-position: -576px 0px}
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <!--<img src="img/animation.png" alt="">-->
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

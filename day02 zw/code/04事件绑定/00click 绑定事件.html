@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+             width: 200px;
+             height: 200px;
+             border: 1px solid #ccc;
+        }
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                        /*
+                        * click()  方式去绑定
+                        * 这种一次为某一个元素只能添加一个事件
+                        * bind() 绑定 unbind() 解绑
+                        * 可以一次添加多个事件
+                        * delegate()  去委派，只能给子元素委派事件.
+                        * 是用来给当前元素的子元素去委派事件的.
+                        * 如果我给一个元素的子元素添加点击事件，如果我后期往一个元素里面在动态添加了子元素
+                        * 子元素也会有点击事件.
+                        * on 的方式去进行绑定 支持给当前元素自己绑定事件
+                        * */
+
+                        //添加点击事件
+                        // $("div").on("click",function(){
+                        //     console.log(this);
+                        // })
+                        //这个是给子元素或者以及孙子元素动态添加事件.
+                        $(".item").on("click",function(){
+                             console.log(this);
+                        });
+
+
+                        $("input").on("click",function(){
+                                //去触发另外一个元素的事件.
+                                // $(".item").click();
+                                //也是去触发另外的一个元素上面的点击事件.
+                                 $(".item").trigger("click");
+                        });
+
+            });
+    </script>
+</head>
+<body>
+
+        <div>
+                <li class="item">
+1111
+                </li>
+        </div>
+        <input type="button" value="触发div 盒子点击事件">
+
+</body>
+</html>

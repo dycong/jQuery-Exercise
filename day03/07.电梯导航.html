@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .header {
+            width: 1200px;
+            height: 800px;
+            background: red;
+            margin: 0 auto;
+        }
+
+        .main div {
+            width: 1200px;
+            height: 600px;
+            margin: 60px auto 0;
+            font-size: 40px;
+        }
+
+        .nav-wrap {
+            width: 100%;
+            height: 50px;
+            background: rgba(0, 0, 0, .5);
+            position: fixed;
+            left: 0;
+            top: 0;
+            /*display: none;*/
+        }
+
+        .nav {
+            width: 1200px;
+            height: 50px;
+            /*background: pink;*/
+            margin: 0 auto;
+        }
+
+        .nav li {
+            float: left;
+        }
+
+        .nav li a {
+            display: block;
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+        }
+
+        .nav li.current {
+            background: #6495ED;
+        }
+
+        body {
+            height: 10000px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <h2>头部</h2>
+</div>
+<div class="nav-wrap">
+    <ul class="nav">
+        <li>
+            <a href="##">JavaEE</a>
+        </li>
+        <li>
+            <a href="##">Android</a>
+        </li>
+        <li>
+            <a href="##">PHP</a>
+        </li>
+        <li>
+            <a href="##">UI设计</a>
+        </li>
+        <li>
+            <a href="##">iOS</a>
+        </li>
+        <li>
+            <a href="##">前段与移动开发</a>
+        </li>
+        <li>
+            <a href="##">C/C++</a>
+        </li>
+        <li>
+            <a href="##">网络营销</a>
+        </li>
+        <li>
+            <a href="##">Python</a>
+        </li>
+        <li>
+            <a href="##" style="border:0 none">云计算之大数据</a>
+        </li>
+    </ul>
+</div>
+<div class="main">
+
+    <div class="java" style="background:#0099CC;">java</div>
+    <div class="android" style="background:#A4FF34;">android</div>
+    <div class="php" style="background:green;">php</div>
+    <div class="ui" style="background:blue;">ui</div>
+    <div class="ios" style="background:blueviolet;">ios</div>
+    <div class="h5" style="background:gray;">h5</div>
+    <div class="c" style="background:yellow;">c</div>
+    <div class="net" style="background:pink;">net</div>
+    <div class="python" style="background:cadetblue;">python</div>
+    <div class="cal" style="background:darkblue;">cal</div>
+
+</div>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        //单击li
+        $('.nav li').click(function () {
+            //自己添加current属性，其他子元素排除current属性
+//            $(this).addClass('current').siblings().removeClass('current');
+            //滚动,获取目标top高度$('').offset().top
+            var Top = $('.main div').eq($(this).index()).offset().top - 50;
+            $('html,body').animate({'scrollTop': Top + 'px'});
+        });
+
+        //滚动事件
+        $(window).scroll(function () {
+            //当滚动距离大于等于第一个div的距离，显示ul
+            if ($(window).scrollTop() >= $('.main div').eq(0).offset().top - 50) {
+                $('.nav-wrap').show();
+            } else {
+                $('.nav-wrap').hide();
+            }
+            $('.main div').each(function (index, obj) {
+                if ($(window).scrollTop() >= $('.main div').eq(index).offset().top - 50) {
+
+                    $('.nav li').eq(index).addClass('current').siblings().removeClass('current')
+                }
+
+//            for (var i = 0; i < $('.nav li').length; i++) {
+//                if ($(window).scrollTop() >= $('.main div').eq(i).offset().top - 50) {
+//
+//                    $('.nav li').eq(i).addClass('current').siblings().removeClass('current')
+//                }
+//            }
+            })
+        })
+    })
+</script>
+</body>
+</html>

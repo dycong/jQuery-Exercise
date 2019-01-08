@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            background-image: url('img/1.jpg');
+            background-size: 600px 300px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="600" height="300">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+
+        //目标图像
+        painting.beginPath();
+        painting.fillStyle = 'yellow';
+        painting.fillRect(0, 0, 600, 300);
+
+        painting.globalCompositeOperation = 'destination-out';
+
+        //源图像
+        wrap.onmousedown = function (e) {
+            painting.beginPath();
+            painting.arc(e.clientX - wrap.offsetLeft, e.clientY - wrap.offsetTop, 30, 0, 2 * Math.PI, false);
+            painting.fill();
+            document.onmousemove = function (e) {
+                painting.beginPath();
+                painting.arc(e.clientX - wrap.offsetLeft, e.clientY - wrap.offsetTop, 30, 0, 2 * Math.PI, false);
+                painting.fill();
+            };
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+            };
+
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>

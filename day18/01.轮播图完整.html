@@ -1,0 +1,209 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap {
+            position: relative;
+        }
+
+        #wrap .list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*width: 500%;*/
+            overflow: hidden;
+        }
+
+        #wrap .list li {
+            /*width: 20%;*/
+            float: left;
+        }
+
+        #wrap .list li img {
+            width: 100%;
+        }
+
+        #wrap .circles {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        #wrap .circles span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: gray;
+            border-radius: 50%;
+        }
+
+        #wrap .circles span.active {
+            background: deeppink;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="wrap">
+    <ul class="list">
+        <li>
+            <a href="javascript:;">
+                <img src="img/1.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/2.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/3.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/4.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="img/5.jpg" />
+            </a>
+        </li>
+    </ul>
+    <!--小圆点-->
+    <div class="circles">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/transform.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        //取消默认行为
+        document.addEventListener('touchstart',function (e) {
+            e.preventDefault();
+        })
+
+        //获取信息
+        var wrap = document.getElementById('wrap');
+        var list = document.querySelector('#wrap .list');
+
+        list.innerHTML += list.innerHTML;
+
+        var liNodes = document.querySelectorAll('#wrap .list li');
+        var spanNode = document.querySelectorAll('#wrap .circles span');
+
+        //适配
+        var styleNode = document.createElement('style');
+        styleNode.innerHTML = ' #wrap{height:'+ liNodes[0].offsetHeight +'px;}';
+        styleNode.innerHTML += ' #wrap .list{width:'+ liNodes.length +'00%;}';
+        styleNode.innerHTML += ' #wrap .list li{width:'+ 100/liNodes.length +'%;}';
+        document.head.appendChild(styleNode);
+
+        //手指初始位置
+        var eleX = 0;
+        //元素初始位置
+        var startX = 0;
+        //图片索引下标
+        var now = 0;
+
+        //手指按下逻辑
+        wrap.addEventListener('touchstart',function (e) {
+            startX = e.changedTouches[0].clientX;
+            //读取元素初始位置
+            eleX = transformCss(list,'translateX');
+
+            //小圆点索引
+            if(now == liNodes.length - 1){
+                now =spanNode.length -1
+            }else if(now == 0){
+                now = spanNode.length;
+            }
+
+        });
+
+        //手指移动逻辑
+        wrap.addEventListener('touchmove',function (e) {
+            list.style.transition = 'none';
+            //手指最终位置
+            var endX =  e.changedTouches[0].clientX;
+            //手指位置差
+            var disX = endX - startX;
+            //元素最终位置
+            var transitionX = disX + eleX;
+
+            //写入操作
+            transformCss(list,'translateX',transitionX);
+        });
+
+        //手指离开逻辑
+        wrap.addEventListener('touchend',function () {
+            //读取元素移动产生的位移
+            var left = transformCss(list,'translateX');
+
+            //图片移动过半，滑到下一张，没过半，回到上一张
+            now = Math.round(-left / document.documentElement.clientWidth);
+
+            //滑动不会超过第一张 和最后一张图片
+            if(now > liNodes.length - 1){
+                now = liNodes.length - 1;
+            }else if(now < 0){
+                now = 0;
+            }
+
+            list.style.transition = '1s';
+            //写入元素最终位置
+            transformCss(list,'translateX',-now * document.documentElement.clientWidth);
+
+            //添加class
+            for(var i = 0;i<spanNode.length;i++){
+                spanNode[i].className = '';
+            }
+            //给小圆点添加类型
+            spanNode[now%spanNode.length].className = 'active';
+        });
+
+        //定时器
+
+
+
+    }
+</script>
+
+</html>

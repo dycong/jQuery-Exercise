@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /*
+            *   实际我们去操作属性我们使用attr，但是表单特殊。我们觉得会提供新的api方法直接操作表单的属性
+            * */
+            //选中 我们操作的都是属于表单的只读属性，无值属性
+            /* checked  disabled  readonly
+            *
+            *  jQuery 给我们提供了一个方法  prop 来操作无值属性
+            *
+            *
+            * */
+            $("button:eq(0)").click(function () {
+                    //$("input[type=checkbox]").attr("checked",true);
+                $("input[type=checkbox]").prop("checked",true);
+            });
+             //不选中，false
+            $("button:eq(1)").click(function () {
+                 // $("input[type=checkbox]").attr("checked",false);
+                $("input[type=checkbox]").prop("checked",false);
+            });
+        });
+    </script>
+</head>
+<body>
+<button>选中</button>
+<button>不选中</button>
+<input type="checkbox" /> <br><br>
+<input type="checkbox" /><br><br>
+<input type="text" readonly>
+<input type="checkbox" checked  disabled  readonly/><br><br>
+<input type="checkbox" /><br><br>
+<input type="checkbox" /><br><br>
+<input type="checkbox" /><br><br>
+<input type="checkbox" /><br><br>
+<input type="checkbox" /><br><br>
+<input type="checkbox" /><br><br>
+
+</body>
+</html>

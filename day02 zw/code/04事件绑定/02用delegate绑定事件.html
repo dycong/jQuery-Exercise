@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+            $(function(){
+                    //delegate 这个单词是委派的一次
+                    //通过父元素给子元素去委派事件.
+                    //点击一下，我通过div 元素 给子元素span 元素去委派一个事件.
+//                    $("input[type=button]").click(function(){
+//                            /*
+//                            * 我要给当前元素div 元素
+//                            * 的子元素span 委派一个click 事件
+//                            * 事件的行为就是function 里面的内容.
+//                            * */
+//                            $("div").delegate("span","click",function(){
+//                                   alert("a");
+//                            })
+//
+//                    });
+//----------------------------------------------------------------------------
+
+                       //直接给span 添加点击事件.
+                       /*$("span").click(function(){
+                            alert("a");
+                       });*/
+                        //通过父元素div 元素给子元素span 元素去委派
+                        $("div").delegate("span","click",function(){
+                            alert("事件被触发");
+                        });
+
+                        //点击button 我创建一个span 元素，放在
+                        //div 内部.
+                       $("button").click(function(){
+                           var span=document.createElement("span");
+                           span.innerHTML="这个是新创建的span 元素";
+                           $("div").append(span);
+                       })
+                       //如果我通过父元素给子元素去委派事件
+                       //如果我动态的添加了子元素
+                       //动态添加的元素也具备这个委派的事件.
+
+
+
+            });
+    </script>
+</head>
+<body>
+<button>创建元素</button>
+<div>
+    <p>原有的p标签</p>
+    <span>原有的span标签</span>
+</div>
+<input type="button" value="委派事件">
+</body>
+</html>

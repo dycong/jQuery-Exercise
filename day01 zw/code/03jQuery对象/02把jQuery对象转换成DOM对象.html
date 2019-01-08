@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+            div{
+                 width: 200px;
+                 height: 200px;
+                 background-color: pink;
+            }
+
+    </style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+                /*
+                    jQuery 虽然虽然不能直接调用dom 对象下面的属性以及方法
+                *   但是jQuery 对象可以转换成dom 对象，然后在调用dom 对象下面的属性以及方法.
+                * */
+                $(function(){
+                        //jQuery 对象
+                         var $btn = $("#btn");
+                        //调用dom 下面的属性或者方法肯定失败.
+                        //但是我可以转换。
+                        //jQuery 对象=>dom 转换有两种方式
+                       //第一种转换方式
+                        $btn[0].onclick = function(){
+                            alert("我现在是dom 对象哦!");
+                        }
+                        //第二种转换方式
+                        $btn.get(0).onclick = function(){
+                              alert("我还是dom 对象哦");
+                        }
+                       //var div = $("div")[0];
+                       // console.log(obj.age);
+                       //实际上里面对应的是3个dom 对象.
+                        //console.log($div.get(1));
+                })
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="div"></div>
+<div>111</div>
+<div></div>
+</body>
+</html>

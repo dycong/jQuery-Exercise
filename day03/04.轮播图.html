@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 900px;
+            height: 350px;
+            margin: 100px auto;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .box ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 900px;
+        }
+
+        .box ul li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .box ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .box ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #fff;
+            background: #333;
+            color: #999;
+            text-align: center;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .box ol li.current {
+            border-color: #f60;
+            color: #f60;
+        }
+
+        .box .leftBtn,
+        .box .rightBtn {
+            width: 40px;
+            height: 100px;
+            background: url(img/index.png) 0 0;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+        }
+
+        .box .leftBtn {
+            left: 0;
+        }
+
+        .box .rightBtn {
+            right: 0;
+            background-position: -50px 0px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box" id="box">
+    <ul id="ulList">
+        <li><img src="img/01.jpg" height="350" width="900" alt=""/></li>
+        <li><img src="img/02.jpg" height="350" width="900" alt=""/></li>
+        <li><img src="img/03.jpg" height="350" width="900" alt=""/></li>
+        <li><img src="img/04.jpg" height="350" width="900" alt=""/></li>
+        <li><img src="img/05.jpg" height="350" width="900" alt=""/></li>
+    </ul>
+    <ol id="olList">
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <a href="##" class="leftBtn" id="leftBtn"></a>
+    <a href="##" class="rightBtn" id="rightBtn"></a>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        //让第一张图显示
+        $('.box ul li:first').show();
+        //定义一个变量
+        var num = 0;
+        //点击右按钮
+        $('#rightBtn').click(function () {
+            num++;
+            if (num > 4) {
+                num = 0;
+            }
+            $('ol li').eq(num).addClass('current').siblings().removeClass('current');
+            $('.box ul li').eq(num).stop().fadeIn(500).siblings().stop().fadeOut(500);
+        });
+        //点击左按钮
+        $('#leftBtn').click(function () {
+            num--;
+            if (num < 0) {
+                num = 4;
+            }
+            $('ol li').eq(num).addClass('current').siblings().removeClass('current');
+            $('.box ul li').eq(num).stop().fadeIn(500).siblings().stop().fadeOut(500);
+        });
+        //点击小圆点
+        $('ol li').click(function () {
+            num = $(this).index();
+            $(this).addClass('current').siblings().removeClass('current');
+            $('.box ul li').eq(num).stop().fadeIn(500).siblings().stop().fadeOut(500);
+        })
+//        $('#rightBtn').trigger('click');
+        var timer = setInterval(function () {
+            $('#rightBtn').trigger('click')
+        },1000);
+//        $('#box ul li').mouseenter(function () {
+//           clearInterval(timer);
+//        })
+//        $('#box ul li').mouseleave(function () {
+//            setInterval(timer);
+//        })
+        $('#box').hover(function () {
+            clearInterval(timer);
+        },function () {
+            timer = setInterval(function () {
+                $('#rightBtn').trigger('click')
+            },1000);
+        })
+    })
+</script>
+</body>
+</html>

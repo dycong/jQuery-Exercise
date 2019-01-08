@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="500" height="400">
+
+</canvas>
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+        var imgNode = new Image();
+
+        imgNode.src = 'img/1.jpg';
+
+        imgNode.onload = function () {
+            draw(imgNode);
+        }
+
+        function draw(img) {
+            //四.显示图片
+            painting.drawImage(imgNode, 0, 0, 250, 400);
+            //马赛克格子大小
+            var size = 22;
+            // 1.读取左边图片的所有像素点信息 oldImageData
+            var oldImageData = painting.getImageData(0, 0, 250, 400);
+
+            //2.右边部分创建一个像素对象 newImageData
+            var newImageData = painting.createImageData(250, 400);
+
+            //处理像素
+            for (var i = 0; i < oldImageData.width; i++) {
+                for (var j = 0; j < oldImageData.height; j++) {
+                    var oldColors = getPxInfo(oldImageData, Math.floor(size * i + Math.random() * size), Math.floor(size * j + Math.random() * size));
+                    for (var a = 0; a < size; a++) {
+                        for (var b = 0; b < size; b++) {
+                            setPxInfo(newImageData, size * i + a, size * j + b,oldColors);
+                        }
+                    }
+                }
+            }
+
+            //写入操作 put
+            painting.putImageData(newImageData, 250, 0)
+
+        }
+
+        //公共函数
+        //单个像素读取操作
+        function getPxInfo(obj, x, y) {
+            var width = obj.width;
+            var objdata = obj.data;
+            var color = [];
+
+            color[0] = objdata[(width * y + x) * 4];
+            color[1] = objdata[(width * y + x) * 4 + 1];
+            color[2] = objdata[(width * y + x) * 4 + 2];
+            color[3] = objdata[(width * y + x) * 4 + 3];
+
+            return color;
+        }
+
+        //单个像素写入操作
+        function setPxInfo(obj, x, y, color) {
+            var width = obj.width;
+            var objdata = obj.data;
+
+            objdata[(width * y + x) * 4] = color[0];
+            objdata[(width * y + x) * 4 + 1] = color[1];
+            objdata[(width * y + x) * 4 + 2] = color[2];
+            objdata[(width * y + x) * 4 + 3] = color[3];
+        }
+
+    }
+</script>
+</body>
+</html>

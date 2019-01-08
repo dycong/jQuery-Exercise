@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--第一步引包-->
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+
+         $(function(){
+
+                $("#btn").click(function(){
+                       /*根据元素的属性去进行查找*/
+                    /*获取页面上面所有的包含class 属性的元素.*/
+                    //console.log($("[class]"));
+                    //获取页面上面包含class 属性的div 元素.
+                    // console.log($("div[class]"));
+                    //获取页面上面的元素，class 属性的值等于box 的元素.
+                    // console.log($("[class=box]"));
+                    /*^ 获取页面上面的元素，含有class  属性，然后class 属性的值以 box 开头的元素*/
+                    // console.log($("[class^=box]"));
+                    /*获取页面上面的元素，含有class  属性，然后class 属性的值以 box 结尾的元素**/
+                    // console.log($("[class$=box]"));
+                    /*获取页面上面的元素，含有class  属性，然后class 属性的值包含 box 结尾的元素**/
+                    console.log($("[class*=box]"));
+                })
+         })
+
+    </script>
+</head>
+<body>
+<input type="button" value="属性选择器" id="btn">
+<input class="box1" type="text">
+<div class="1box">adsfsadfdsaf</div>
+<p class="1b2ox"></p>
+</body>
+</html>

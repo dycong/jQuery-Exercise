@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 600px;
+            height: 200px;
+            border: 1px solid deepskyblue;
+            border-radius: 10px;
+            margin: 300px auto;
+            position: relative;
+        }
+
+        #big {
+            width: 100px;
+            height: 100px;
+            border: 1px solid deepskyblue;
+            position: absolute;
+            top: -60px;
+            left: 60px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        #mask{
+            width: 140px;
+            height: 100px;
+            background-color: #fff;
+            position: absolute;
+            top: -101px;
+            left: 60px;
+        }
+        #small{
+            width: 80px;
+            height: 80px;
+            z-index: 2;
+            border: 1px solid deepskyblue;
+            position: absolute;
+            top: 9px;
+            left: 9px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="big">
+        <div id="small">登录</div>
+    </div>
+    <div id="mask"></div>
+
+</div>
+
+<script type="text/javascript" src=""></script>
+<script>
+
+</script>
+</body>
+</html>

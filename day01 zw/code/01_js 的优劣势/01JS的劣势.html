@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 100px;
+            margin: 20px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script>
+            /*
+            * 1：window.onload 事件在页面只能执行一次
+            * 2:代码兼容性问题差，容易报错，影响下面的代码执行
+            * 3:如果我要在显示这个div 的时候，加一点点特效，就要写很多复杂的代码去实现
+            * */
+            window.onload=function(){  //页面上面所有的元素加载完毕之后执行.
+                 var div=document.getElementsByTagName("div");
+                 //添加点击事件. 操作div
+                 document.getElementById("show1").onclick=function(){
+                        //这边我要操作这些div 元素，我需要遍历，一个一个的进行操作
+                        for(var i=0;i<div.length;i++){
+                             div[i].style.display="block";
+                        }
+                 }
+                 document.getElementById("text").onclick=function(){
+                        //不能批量操作
+                        for(var i=0;i<div.length;i++){
+                             //处理兼容性的
+                             div[i].innerText="hello";
+                        }
+                 }
+            }
+
+
+    </script>
+</head>
+<body>
+<button id="show">显示</button>
+<button id="text">添加文本</button>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

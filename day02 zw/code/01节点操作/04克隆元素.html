@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clone 方法的使用</title>
+    <style></style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+
+    $(function(){
+        $(".box").click(function(){
+             alert(1);
+        })
+
+        $("button").click(function(){
+                //相当于返回当前元素的一份拷贝
+                //事件没有被克隆
+                //var box = $(".box").clone()
+                //深度克隆，当前元素上面的事件也会被克隆.
+                var box = $(".box").clone(true)
+                $(".box1").append(box);
+        });
+    });
+    </script> 
+</head>
+<body>
+<button>复制元素</button>
+<div class="box" >克隆的元素</div>
+<div class="box1">
+
+</div>
+</body>
+</html>

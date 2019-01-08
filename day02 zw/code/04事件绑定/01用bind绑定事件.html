@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.12.4.js"></script>
+    <style>
+         div{
+              border: 1px solid #ccc;
+              width: 200px;
+              height: 200px;
+         }
+    </style>
+    <script>
+        $(function () {
+              $("#button1").click(function(){
+                    //我为这个下面的div 添加一个点击事件
+                    //$("div")  bind 绑定的意思 click
+                    //第一个参数是事件的名称
+                    //第二个参数就是事件的具体行为
+                    //为当前元素上面添加了两个事件
+                    //一个是click ，一个是鼠标悬停.
+                    $("div").bind("click mouseover",function(){
+                            alert("事件被触发");
+                    })
+              });
+
+              //把div 上面的事件移除.
+              $("#button2").click(function(){
+                    //移除事件
+                    $("div").unbind("mouseover");
+              })
+        });
+    </script>
+</head>
+<body>
+<button  id="button1">绑定事件</button>
+<button  id="button2">移除事件</button>
+
+<div>
+     <button>这是一个元素</button>
+</div>
+</body>
+</html>

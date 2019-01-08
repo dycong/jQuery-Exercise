@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="400" height="400">
+
+</canvas>
+
+<script type="text/javascript" src=""></script>
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+        var flag = 0;
+        var scale = 0;
+        var value = 1;
+
+        painting.fillStyle = 'red';
+        setInterval(function () {
+            flag++;
+            painting.save();
+            painting.clearRect(0, 0, wrap.width, wrap.height);
+            painting.translate(200, 200);
+            painting.rotate(flag * Math.PI / 180);
+
+            scale += value;
+            if(scale/100 > 2){
+                value = -1
+            }else if(scale/100 < 0){
+                value = 1
+            }
+            painting.scale(scale/100,scale/100);
+            painting.fillRect(-50, -50, 100, 100);
+            painting.restore();
+        }, 20)
+
+
+    }
+
+</script>
+</body>
+</html>

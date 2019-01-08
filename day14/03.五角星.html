@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #wrap {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap" width="500" height="300">
+
+</canvas>
+
+<script>
+    window.onload = function () {
+        var wrap = document.getElementById('wrap');
+
+        var painting = wrap.getContext('2d');
+
+        var R = 100;
+        var r = 38.6;
+
+        //位移
+        painting.translate(100, 100);
+
+        //起始点坐标(R*cos18,R*sin18)
+        painting.moveTo(R * Math.cos(18 * Math.PI / 180), -R * Math.sin(18 * Math.PI / 180));
+
+
+        for (var i = 0; i < 5; i++) {
+            painting.lineTo(R * Math.cos((72 * i + 18) * Math.PI / 180), -R * Math.sin((72 * i + 18) * Math.PI / 180));
+            painting.lineTo(r * Math.cos((72 * i + 54) * Math.PI / 180), -r * Math.sin((72 * i + 54) * Math.PI / 180))
+        }
+        painting.closePath();
+        painting.lineWidth="3";
+        painting.fillStyle = "#F6F152";
+        painting.strokeStyle = "#F5270B";
+        painting.fill();
+        painting.stroke();
+
+
+    }
+</script>
+</body>
+</html>

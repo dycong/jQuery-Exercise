@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引包注意路径问题</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            //$ is not defined 以后看到这个错误，
+            //路径问题，是否引包或者引入的地址是否正确.
+            $(function(){
+                 console.log("Wwww");
+            })
+    </script>
+
+</head>
+<body>
+<button id="btn">按钮</button>
+</body>
+</html>

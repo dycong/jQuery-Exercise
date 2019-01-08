@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>attr 方法与removeAttr 方法的使用</title>
+    <style></style>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //在原生的js 学习属性的操作. setAttribute(name,value),getAttribute(name),removeAttribute();
+
+            //jQuery 对上面的方法也进行了分装.  clone()
+
+            //获取属性以及设置属性 attr 方法，是jQuery 提供.
+            $("button:eq(0)").click(function () {
+                //一个参数就是去获取对应的属性对应的值.
+                // console.log($("a").attr("href"));
+                // //console.log($("a").attr("style"));
+                // console.log($("a").css("color"));
+                //两个参数 就是设置当前元素的属性对应的值.
+                $("a").attr("href","http://www.toutiao.com");
+            });
+            $("button:eq(1)").click(function () {
+                $("a").removeAttr("href");
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<button>获取以及设置</button>
+<button>删除属性</button>
+<a href="http://www.baidu.com"   style="color:red;">百度</a>
+</body>
+</html>

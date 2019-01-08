@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本选择器的使用</title>
+    <!--引入jQuery 库-->
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+            //入口函数.
+            $(function(){
+                 /*
+                 * 把基本选择器做了一个归类. id 选择器，类选择器，有标签选择器，组合选择器，并集选择器
+                 * */
+                 $("#btn").click(function(){
+                        //基本选择器
+                      //  1:id 选择器，根据id 去获取页面上面的元素
+                          //前面必须是# 开头，
+                          var $btn=$("#btn"); //获取到的是一个元素，jQuery对象只有一个dom 元素. //document.getElementById
+                      // 2:类选择器 根据class 的名称去获取页面上面的元素.
+                        // $(".item").css("background","red"); // document.getElementsByClass
+//                        必须是以.开头，后面跟类名.
+//                        3:标签选择器 直接根据标签获取
+//                           $("div").css("background","blue"); //document.getElementsByTagName
+//                        4 组合选择器. 多个条件，以逗号隔开
+                          // console.log($("#btn,#box1"));
+//                        5:并集选择器 我想获取到class 的值等于item 的li 元素.
+                         // console.log($("li#box1"));
+
+                         /*  获取到页面上面所有的元素. 通配符. */
+//                        6: * 号选择器，获取页面上面所有的元素
+                          $("*").css("background","red");
+                 })
+            })
+    </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<ul>
+    <li  id="box1">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li class="item">4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<div class="item">div</div>
+<p>于涵</p>
+</body>
+</html>

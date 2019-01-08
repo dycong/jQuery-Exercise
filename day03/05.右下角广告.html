@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            display: none;
+            width: 300px;
+            height:180px;
+            position: fixed;
+            bottom:0;
+            right:0;
+        }
+        #h{
+            position: absolute;
+            right:0;
+            top:0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="img/adv.gif" alt="">
+    <img src="img/h.jpg" alt="" id="h">
+</div>
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        $('div').slideDown(1000).slideUp(1000).fadeIn(1000);
+        $('#h').click(function () {
+            $('div').fadeOut(1000)
+        })
+    })
+</script>
+</body>
+</html>

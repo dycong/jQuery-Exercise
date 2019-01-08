@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+
+        .btn-box {
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+                /*添加事件*/
+                $("#btn1").on("click",function(){
+                        $("#tar-city").append($("#src-city>option"));
+                });
+
+                $("#btn2").on("click",function(){
+                    //将当前元素添加到指定的元素的内部的后面
+                    $("#tar-city>option").appendTo($("#src-city"));
+                });
+
+                $("#btn3").on("click",function(){
+                    //将当前元素添加到指定的元素的内部的后面
+                       $("#src-city option:selected").appendTo($("#tar-city"));
+                })
+
+                $("#btn4").on("click",function(){
+                         $("#tar-city option:selected").appendTo($("#src-city"));
+                });
+
+        });
+    </script>
+</head>
+<body>
+<h1>好友列表：</h1>
+<select id="src-city" name="src-city" multiple>
+    <option value="1">保定</option>
+    <option value="2">驻马店</option>
+    <option value="3">平顶山</option>
+    <option value="4">鹤壁</option>
+</select>
+
+<div class="btn-box">
+    <button id="btn1">&gt;&gt;</button>
+    <button id="btn2">&lt;&lt;</button>
+    <button id="btn3">&nbsp;&gt;&nbsp;</button>
+    <button id="btn4">&nbsp;&lt;&nbsp;</button>
+</div>
+<select id="tar-city" name="tar-city" multiple>
+
+</select>
+</body>
+</html>
